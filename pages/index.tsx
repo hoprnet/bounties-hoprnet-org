@@ -66,12 +66,18 @@ const Home: NextPage = () => {
       <div style={styles.titleStyle}>BE PART OF THE HOPR ECOSYSTEM</div>
       <div style={styles.sectionWrapper}>
         <Image src={"/Section-img.png"} height={400} width={400} />
-        <div>
+        <div style={{ paddingTop: 40 }}>
           HOPR is building the transport layer privacy needed to make web3 work.
           Work with us to build dApps that change data privacy for good.{" "}
         </div>
       </div>
-      <div style={styles.centeringWrapper}>
+      <div
+        style={{
+          ...styles.centeringWrapper,
+          paddingBottom: 40,
+          paddingTop: 60,
+        }}
+      >
         <div style={styles.wideText}>
           * Bounties are valued in USD but paid out in HOPR tokens
         </div>

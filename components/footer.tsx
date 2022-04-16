@@ -18,7 +18,7 @@ export const Footer = () => {
           <div>©2021 HOPR Association, all rights reserved</div>
         </div>
       </div>
-      <div>
+      <div style={styles.iconListWrapper}>
         <ul style={styles.iconList}>
           <li>
             <a
@@ -101,10 +101,12 @@ export const Footer = () => {
 
 const styles: Record<string, CSSProperties> = {
   container: {
+    padding: "0px 120px",
+    alignItems: "center",
     color: "white",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    height: 500,
+    height: 220,
     background: "linear-gradient(180deg, #0000B4 0.5%, #000050 100%)",
   },
   iconList: {
@@ -119,5 +121,10 @@ const styles: Record<string, CSSProperties> = {
   },
   addressWrapper: {
     paddingBottom: 20,
+  },
+  iconListWrapper: {
+    display: "flex",
+    justifyContent: "end",
+    paddingBottom: 50,
   },
 };
