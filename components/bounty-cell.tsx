@@ -6,7 +6,7 @@ export enum BountyStatusE {
   TAKEN = "TAKEN",
 }
 
-interface IBounty {
+export interface IBounty {
   date: string;
   status: BountyStatusE;
   price: number;
@@ -24,19 +24,21 @@ export const BountyCell: React.FC<{ bounty: IBounty }> = ({ bounty }) => {
       <div style={styles.title}>{title}</div>
       <div style={styles.description}>{description}</div>
       <div style={styles.footer}>
-        <div>Date finished: {date}</div>
-        <div>
+        <div style={styles.dateWrapper}>Date finished: {date}</div>
+        <div style={styles.statusWrapper}>
           <div
             style={{
-              borderRadius: "50%",
+              borderRadius: 9,
+              padding: "1px 5px",
               color: status === BountyStatusE.COMPLETED ? "#25FF00" : "#FF0000",
               backgroundColor:
                 status === BountyStatusE.COMPLETED ? "#285E13" : "#5E1313",
+              marginRight: 14,
             }}
           >
             {status}
           </div>
-          <div>
+          <div style={styles.bountyPriceWrapper}>
             BOUNTY: <span style={styles.priceWrapper}>{price}</span> ETH
           </div>
         </div>
@@ -47,7 +49,7 @@ export const BountyCell: React.FC<{ bounty: IBounty }> = ({ bounty }) => {
 
 const styles: Record<string, CSSProperties> = {
   container: {
-    height: 500,
+    // height: 500,
     width: 300,
     borderRadius: 9,
     backgroundColor: "#F8F8FB",
@@ -73,8 +75,22 @@ const styles: Record<string, CSSProperties> = {
   },
   footer: {
     borderTop: "1px solid #ADADAD",
+    padding: "2px 15px 10px 15px",
   },
   priceWrapper: {
     color: "#0000B4",
+  },
+  bountyPriceWrapper: {
+    fontWeight: 600,
+  },
+  statusWrapper: {
+    display: "flex",
+    alignItems: "center",
+  },
+  dateWrapper: {
+    color: "#868686",
+    fontWeight: 600,
+    fontSize: 10,
+    lineHeight: "25px",
   },
 };
