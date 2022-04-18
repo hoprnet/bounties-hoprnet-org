@@ -7,13 +7,14 @@ import { BountyCell, BountyStatusE } from "../components/bounty-cell";
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
 
-const exampleBounty = {
+export const exampleBounty = {
   date: "10rd April 2022",
   description:
     "A 2-day conference (+ 2-day hackathon) to unite all regens in the capital of Europe and explore the potential of Web3 to regenerate the ea...",
   price: 0.2,
   status: BountyStatusE.COMPLETED,
   title: "HOPR - decentralized privacy-preserving messaging protocol",
+  url: "https://gitcoin.com",
 };
 
 const Home: NextPage = () => {
@@ -22,13 +23,13 @@ const Home: NextPage = () => {
       <Navbar />
       <div style={styles.gradient} />
       <div style={styles.robotsImage}>
-        <Image src="/Hero-BG-png.png" height={500} width={700} />
+        <Image src="/Hero-BG-png.png" height={400} width={588} />
       </div>
       <div style={styles.bountiesStatsWrapper}>
         <BountiesStatsRow />
       </div>
       <div style={styles.textContainer}>
-        <div style={styles.titleStyle}>
+        <div style={{ ...styles.titleStyle, maxWidth: 1000 }}>
           HELP BUILD THE FUTURE OF TRANSPORT LAYER PRIVACY
         </div>
         <div style={{ width: 600 }}>
@@ -63,10 +64,12 @@ const Home: NextPage = () => {
           .
         </div>
       </div>
-      <div style={styles.titleStyle}>BE PART OF THE HOPR ECOSYSTEM</div>
+      <div style={{ ...styles.titleStyle, padding: "0px 30px" }}>
+        BE PART OF THE HOPR ECOSYSTEM
+      </div>
       <div style={styles.sectionWrapper}>
-        <Image src={"/Section-img.png"} height={400} width={400} />
-        <div style={{ paddingTop: 40 }}>
+        <Image src={"/Section-img.png"} height={400} width={325} />
+        <div style={{ ...styles.wideText, paddingTop: 70, maxWidth: 460 }}>
           HOPR is building the transport layer privacy needed to make web3 work.
           Work with us to build dApps that change data privacy for good.{" "}
         </div>
@@ -75,7 +78,7 @@ const Home: NextPage = () => {
         style={{
           ...styles.centeringWrapper,
           paddingBottom: 40,
-          paddingTop: 60,
+          paddingTop: 96,
         }}
       >
         <div style={styles.wideText}>
@@ -145,7 +148,8 @@ const styles: Record<string, CSSProperties> = {
   },
   sectionWrapper: {
     display: "flex",
-    gap: 180,
+    gap: 120,
+    justifyContent: "center",
   },
 };
 

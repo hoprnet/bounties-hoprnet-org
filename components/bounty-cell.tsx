@@ -12,12 +12,16 @@ export interface IBounty {
   price: number;
   title: string;
   description: string;
+  url: string;
 }
 
-export const BountyCell: React.FC<{ bounty: IBounty }> = ({ bounty }) => {
+export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
+  bounty,
+  showcase,
+}) => {
   const { date, price, status, title, description } = bounty;
   return (
-    <div style={styles.container}>
+    <div style={styles.container} key={title}>
       <div style={styles.bountyImgWrapper}>
         <Image src={"/Tile-BG.png"} height={220} width={240} />
       </div>
@@ -26,28 +30,39 @@ export const BountyCell: React.FC<{ bounty: IBounty }> = ({ bounty }) => {
       <div style={styles.footer}>
         <div style={styles.dateWrapper}>Date finished: {date}</div>
         <div style={styles.statusWrapper}>
-          <div
-            style={{
-              borderRadius: 9,
-              padding: "1px 5px",
-              color: status === BountyStatusE.COMPLETED ? "#25FF00" : "#FF0000",
-              backgroundColor:
-                status === BountyStatusE.COMPLETED ? "#285E13" : "#5E1313",
-              marginRight: 14,
-            }}
-          >
-            {status}
-          </div>
+          {!showcase && (
+            <div style={styles.statusBadge(status === BountyStatusE.COMPLETED)}>
+              {status}
+            </div>
+          )}
           <div style={styles.bountyPriceWrapper}>
             BOUNTY: <span style={styles.priceWrapper}>{price}</span> ETH
           </div>
         </div>
       </div>
+      {showcase && (
+        <div style={styles.showcaseFooter}>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div style={styles.showcaseBadge}>GITHUB</div>
+          </a>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div style={styles.showcaseBadge}>DEMO-PAGE</div>
+          </a>
+        </div>
+      )}
     </div>
   );
 };
 
-const styles: Record<string, CSSProperties> = {
+const styles: Record<string, CSSProperties | any> = {
   container: {
     // height: 500,
     width: 300,
@@ -92,5 +107,27 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 600,
     fontSize: 10,
     lineHeight: "25px",
+  },
+  showcaseFooter: {
+    padding: 15,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 14,
+    borderTop: "1px solid #ADADAD",
+  },
+  statusBadge: (completed: boolean) => ({
+    borderRadius: 9,
+    padding: "1px 5px",
+    color: completed ? "#25FF00" : "#FF0000",
+    backgroundColor: completed ? "#285E13" : "#5E1313",
+    marginRight: 14,
+  }),
+  showcaseBadge: {
+    borderRadius: 20,
+    padding: "3px 8px",
+    color: "white",
+    background: "linear-gradient(180deg, #0000B2 15.32%, #000050 83.35%)",
+    fontWeight: 700,
   },
 };

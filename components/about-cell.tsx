@@ -8,7 +8,7 @@ export const AboutCell: React.FC<{ title: string; description: string }> = ({
     <div style={styles.container}>
       <div style={styles.icon}></div>
       <div style={styles.title}>{title}</div>
-      <div>{description}</div>
+      <div style={styles.description}>{description}</div>
     </div>
   );
 };
@@ -17,6 +17,7 @@ const styles: Record<string, CSSProperties> = {
   container: {
     display: "flex",
     flexDirection: "column",
+    width: 270,
   },
   icon: {
     alignSelf: "center",
@@ -36,5 +37,6 @@ const styles: Record<string, CSSProperties> = {
   description: {
     fontWeight: 18,
     lineHeight: "26px",
+    letterSpacing: "0.15px",
   },
 };
