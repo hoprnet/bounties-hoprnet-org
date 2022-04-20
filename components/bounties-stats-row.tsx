@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import styles from "../styles/components/bounties-stats-row.module.css";
 
 const apiData = {
   active: 6,
@@ -9,7 +9,7 @@ const apiData = {
 
 export const BountiesStatsRow = () => {
   return (
-    <div style={styles.container}>
+    <div className={styles.container}>
       <BountyStatCell text={"ACTIVE BOUNTIES"} value={apiData.active} />
       <BountyStatCell text={"COMPLETED BOUNTIES"} value={apiData.completed} />
       <BountyStatCell
@@ -28,47 +28,14 @@ const BountyStatCell: React.FC<{
   unit?: string;
 }> = ({ text, value, unit }) => {
   return (
-    <div style={styles.cell}>
+    <div className={styles.cell}>
       <div>{text}</div>
-      <div style={styles.cellValue}>
+      <div className={styles.cellValue}>
         {value}
-        <div style={styles.cellUnitWrapper}>
-          {unit && <div style={styles.cellUnit}>{unit}</div>}
+        <div className={styles.cellUnitWrapper}>
+          {unit && <div className={styles.cellUnit}>{unit}</div>}
         </div>
       </div>
     </div>
   );
-};
-
-const styles: Record<string, CSSProperties> = {
-  container: {
-    display: "flex",
-    gap: 42,
-    width: "fit-content",
-  },
-  cell: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 9,
-    backgroundColor: "#F8F8FB",
-    minHeight: 100,
-    minWidth: 200,
-  },
-  cellValue: {
-    fontSize: 50,
-    color: "#0000B4",
-    display: "flex",
-  },
-  cellUnit: {
-    position: "absolute",
-    bottom: 10,
-    left: 6,
-    fontSize: "initial",
-    color: "#414141",
-  },
-  cellUnitWrapper: {
-    position: "relative",
-  },
 };

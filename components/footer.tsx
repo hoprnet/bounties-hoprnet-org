@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { CSSProperties } from "react";
+import styles from "../styles/components/footer.module.css";
 
 export const Footer = () => {
   return (
-    <div style={styles.container}>
-      <div style={styles.leftCell}>
-        <div style={{ width: 58, height: 58 }}>
+    <div className={styles.container}>
+      <div className={styles.leftCell}>
+        <div>
           <Image
             layout="fixed"
             src={"/hopr-favicon.svg"}
@@ -14,17 +14,19 @@ export const Footer = () => {
           />
         </div>
         <div>
-          <div style={styles.addressWrapper}>
-            <div>HOPR Services AGB</div>
-            <div>leicherweg 33</div>
+          <div className={`${styles.addressWrapper} ${styles.footerText}`}>
+            <div>HOPR Services AG</div>
+            <div>Bleicherweg 33</div>
             <div>8003 Zürich</div>
             <div>Switzerland</div>
           </div>
-          <div>©2021 HOPR Association, all rights reserved</div>
+          <div className={styles.footerText}>
+            ©2021 HOPR Association, all rights reserved
+          </div>
         </div>
       </div>
-      <div style={styles.iconListWrapper}>
-        <ul style={styles.iconList}>
+      <div className={styles.iconListWrapper}>
+        <ul className={styles.iconList}>
           <li>
             <a
               href="https://twitter.com/hoprnet"
@@ -134,34 +136,4 @@ export const Footer = () => {
       </div>
     </div>
   );
-};
-
-const styles: Record<string, CSSProperties> = {
-  container: {
-    padding: "0px 120px",
-    alignItems: "center",
-    color: "white",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    height: 220,
-    background: "linear-gradient(180deg, #0000B4 0.5%, #000050 100%)",
-  },
-  iconList: {
-    filter: "invert(1)",
-    listStyle: "none",
-    display: "flex",
-    gap: 24,
-  },
-  leftCell: {
-    display: "flex",
-    gap: 36,
-  },
-  addressWrapper: {
-    paddingBottom: 20,
-  },
-  iconListWrapper: {
-    display: "flex",
-    justifyContent: "end",
-    paddingBottom: 50,
-  },
 };

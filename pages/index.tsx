@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { CSSProperties } from "react";
 import { BountiesGrid } from "../components/bounties--grid";
 import { BountiesStatsRow } from "../components/bounties-stats-row";
-import { BountyCell, BountyStatusE } from "../components/bounty-cell";
+import { BountyStatusE } from "../components/bounty-cell";
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
+import styles from "../styles/index.module.css";
 
 export const exampleBounty = {
   date: "10rd April 2022",
@@ -21,136 +21,75 @@ const Home: NextPage = () => {
   return (
     <div>
       <Navbar />
-      <div style={styles.gradient} />
-      <div style={styles.robotsImage}>
+      <div className={styles.gradient} />
+      <div className={styles.robotsImage}>
         <Image src="/Hero-BG-png.png" height={400} width={588} />
       </div>
-      <div style={styles.bountiesStatsWrapper}>
+      <div className={styles.bountiesStatsWrapper}>
         <BountiesStatsRow />
       </div>
-      <div style={styles.textContainer}>
-        <div style={{ ...styles.titleStyle, maxWidth: 1000 }}>
-          HELP BUILD THE FUTURE OF TRANSPORT LAYER PRIVACY
-        </div>
-        <div style={{ width: 600 }}>
-          <div style={styles.wideText}>
+      <div className={styles.contentWrapper}>
+        <div className={styles.textContainer}>
+          <div className={`${styles.titleStyle} ${styles.mainTitle}`}>
+            HELP BUILD THE FUTURE OF TRANSPORT LAYER PRIVACY
+          </div>
+          <div className={`${styles.wideText} ${styles.mainSubtext}`}>
             Join a passionate, skilled, and dedicated development community
             building free and open source privacy infrastructure for web3.
           </div>
         </div>
-      </div>
-      <div style={{ ...styles.titleStyle, paddingBottom: 60 }}>
-        OPEN BOUNTIES
-      </div>
-      <div style={styles.gridWrapper}>
-        <BountiesGrid
-          bounties={[
-            exampleBounty,
-            exampleBounty,
-            exampleBounty,
-            exampleBounty,
-            exampleBounty,
-            exampleBounty,
-          ]}
-        />
-      </div>
-      <div style={styles.centeringWrapper}>
-        <div style={{ ...styles.wideText, width: 650, paddingBottom: 200 }}>
-          Don’t see a bounty for you? Announce your interest in being a hunter
-          and share your bounty ideas in the{" "}
-          <a href="/" style={styles.linkStyle}>
-            bounty forum
-          </a>
-          .
+        <div className={`${styles.titleStyle} ${styles.openBountiesTitle}`}>
+          OPEN BOUNTIES
         </div>
-      </div>
-      <div style={{ ...styles.titleStyle, padding: "0px 30px" }}>
-        BE PART OF THE HOPR ECOSYSTEM
-      </div>
-      <div style={styles.sectionWrapper}>
-        <Image src={"/Section-img.png"} height={400} width={325} />
-        <div style={{ ...styles.wideText, paddingTop: 70, maxWidth: 460 }}>
-          HOPR is building the transport layer privacy needed to make web3 work.
-          Work with us to build dApps that change data privacy for good.{" "}
+        <div className={styles.gridWrapper}>
+          <BountiesGrid
+            bounties={[
+              exampleBounty,
+              exampleBounty,
+              exampleBounty,
+              exampleBounty,
+              exampleBounty,
+              exampleBounty,
+            ]}
+          />
         </div>
-      </div>
-      <div
-        style={{
-          ...styles.centeringWrapper,
-          paddingBottom: 40,
-          paddingTop: 96,
-        }}
-      >
-        <div style={styles.wideText}>
-          * Bounties are valued in USD but paid out in HOPR tokens
+        <div className={styles.centeringWrapper}>
+          <div className={`${styles.wideText} ${styles.shareIdeasText}`}>
+            Don’t see a bounty for you? Announce your interest in being a hunter
+            and share your bounty ideas in the{" "}
+            <a href="/" className={styles.linkStyle}>
+              bounty forum
+            </a>
+            .
+          </div>
+        </div>
+        <div className={styles.titleStyle}>BE PART OF THE HOPR ECOSYSTEM</div>
+        <div>
+          <div className={styles.sectionWrapper}>
+            <div>
+              <Image
+                src={"/Section-img.png"}
+                height={400}
+                width={325}
+                layout="intrinsic"
+              />
+            </div>
+            <div className={`${styles.wideText} ${styles.ecosystemText}`}>
+              HOPR is building the transport layer privacy needed to make web3
+              work. Work with us to build dApps that change data privacy for
+              good.{" "}
+            </div>
+          </div>
+        </div>
+        <div className={`${styles.centeringWrapper} ${styles.asterixText}`}>
+          <div className={styles.wideText}>
+            * Bounties are valued in USD but paid out in HOPR tokens
+          </div>
         </div>
       </div>
       <Footer />
     </div>
   );
-};
-
-const styles: Record<string, CSSProperties> = {
-  textContainer: {
-    paddingTop: 20,
-    paddingBottom: 120,
-    display: "flex",
-    flexDirection: "column",
-    textAlign: "center",
-    alignItems: "center",
-    gap: 34,
-  },
-  robotsImage: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  gradient: {
-    position: "absolute",
-    zIndex: -2,
-    width: "100%",
-    height: 827,
-    left: 0,
-    top: 74,
-    background:
-      "linear-gradient(180.13deg, #0000B4 -110.52%, rgba(216, 216, 216, 0.0001) 99.89%)",
-  },
-  bountiesStatsWrapper: {
-    position: "absolute",
-    top: 100,
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
-  },
-  titleStyle: {
-    fontSize: 60,
-    lineHeight: "60px",
-    color: "#414141",
-    textAlign: "center",
-  },
-  wideText: {
-    fontSize: 18,
-    lineHeight: "26px",
-    letterSpacing: "0.15px",
-    color: "#414141",
-    textAlign: "center",
-  },
-  gridWrapper: {
-    paddingBottom: 60,
-  },
-  linkStyle: {
-    textDecoration: "underline",
-    color: "#0000B4",
-  },
-  centeringWrapper: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  sectionWrapper: {
-    display: "flex",
-    gap: 120,
-    justifyContent: "center",
-  },
 };
 
 export default Home;

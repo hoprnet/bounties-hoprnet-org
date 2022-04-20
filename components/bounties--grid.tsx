@@ -1,12 +1,12 @@
-import { CSSProperties } from "react";
 import { BountyCell, IBounty } from "./bounty-cell";
+import styles from "../styles/components/bounties-grid.module.css";
 
 export const BountiesGrid: React.FC<{
   bounties: IBounty[];
   showcase?: boolean;
 }> = ({ bounties, showcase }) => {
   return (
-    <div style={styles.container}>
+    <div className={styles.container}>
       {bounties.map((bounty) =>
         showcase ? (
           <a
@@ -18,19 +18,9 @@ export const BountiesGrid: React.FC<{
             <BountyCell bounty={bounty} showcase={showcase} />
           </a>
         ) : (
-          <BountyCell bounty={bounty} showcase={showcase} />
+          <BountyCell key={bounty.url} bounty={bounty} showcase={showcase} />
         )
       )}
     </div>
   );
-};
-
-const styles: Record<string, CSSProperties> = {
-  container: {
-    display: "grid",
-    gridTemplateColumns: "300px 300px 300px",
-    columnGap: 20,
-    rowGap: 58,
-    justifyContent: "center",
-  },
 };

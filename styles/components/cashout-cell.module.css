@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  max-width: 920px;
+}
+.flowReversed {
+  flex-direction: row-reverse;
+}
+.cell {
+  width: 100%;
+}
+.iconCell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.icon {
+  align-self: center;
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  background-color: #000050;
+}
+.title {
+  font-size: 28px;
+  line-height: 25px;
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+.description {
+  font-size: 18px;
+  line-height: 26px;
+}

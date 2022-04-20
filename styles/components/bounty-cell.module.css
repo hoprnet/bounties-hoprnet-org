@@ -1,0 +1,72 @@
+.container {
+  width: 300px;
+  border-radius: 9px;
+  background-color: #f8f8fb;
+  box-shadow: 0px 2px 34px -7px rgba(0, 0, 0, 0.5);
+}
+.bountyImgWrapper {
+  border-radius: 9px 9px 0px 0px;
+  display: flex;
+  justify-content: center;
+  height: 220px;
+  background: linear-gradient(23.3deg, #0000db 12.97%, #000050 83.56%);
+}
+.title {
+  padding: 20px;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 700;
+}
+.description {
+  padding: 0px 20px 20px 20px;
+  font-size: 14;
+  line-height: 18px;
+}
+.footer {
+  border-top: 1px solid #adadad;
+  padding: 2px 15px 10px 15px;
+}
+.priceWrapper {
+  color: #0000b4;
+}
+px .bountyPriceWrapper {
+  font-weight: 600;
+}
+.statusWrapper {
+  display: flex;
+  align-items: center;
+}
+.dateWrapper {
+  color: #868686;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 25px;
+}
+.showcaseFooter {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid #adadad;
+}
+.statusBadge {
+  border-radius: 9px;
+  padding: 1px 5px;
+  margin-right: 14px;
+}
+.completedBadge {
+  color: #25ff00;
+  background-color: #285e13;
+}
+.takenBadge {
+  color: #ff0000;
+  background-color: #5e1313;
+}
+.showcaseBadge {
+  border-radius: 20px;
+  padding: 3px 8px;
+  color: white;
+  background: linear-gradient(180deg, #0000b2 15.32%, #000050 83.35%);
+  font-weight: 700;
+}
