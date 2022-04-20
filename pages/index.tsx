@@ -1,23 +1,17 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { BountiesGrid } from "../components/bounties--grid";
+import { BountiesGrid } from "../components/bounties-grid";
 import { BountiesStatsRow } from "../components/bounties-stats-row";
-import { BountyStatusE } from "../components/bounty-cell";
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
 import styles from "../styles/index.module.css";
-
-export const exampleBounty = {
-  date: "10rd April 2022",
-  description:
-    "A 2-day conference (+ 2-day hackathon) to unite all regens in the capital of Europe and explore the potential of Web3 to regenerate the ea...",
-  price: 0.2,
-  status: BountyStatusE.COMPLETED,
-  title: "HOPR - decentralized privacy-preserving messaging protocol",
-  url: "https://gitcoin.com",
-};
+import useSWR from "swr";
+import axios from "axios";
 
 const Home: NextPage = () => {
+  const bounties = useSWR("/api/bounties", axios);
+  const stats = useSWR("/api/stats", axios);
+
   return (
     <div>
       <Navbar />
@@ -26,7 +20,7 @@ const Home: NextPage = () => {
         <Image src="/Hero-BG-png.png" height={400} width={588} />
       </div>
       <div className={styles.bountiesStatsWrapper}>
-        <BountiesStatsRow />
+        <BountiesStatsRow stats={stats.data?.data as any} />
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.textContainer}>
@@ -42,16 +36,7 @@ const Home: NextPage = () => {
           OPEN BOUNTIES
         </div>
         <div className={styles.gridWrapper}>
-          <BountiesGrid
-            bounties={[
-              exampleBounty,
-              exampleBounty,
-              exampleBounty,
-              exampleBounty,
-              exampleBounty,
-              exampleBounty,
-            ]}
-          />
+          <BountiesGrid bounties={bounties.data?.data?.bounties} />
         </div>
         <div className={styles.centeringWrapper}>
           <div className={`${styles.wideText} ${styles.shareIdeasText}`}>

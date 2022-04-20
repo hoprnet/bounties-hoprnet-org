@@ -1,23 +1,18 @@
+import { IStats } from "../shared/stats";
 import styles from "../styles/components/bounties-stats-row.module.css";
+import { Spinner } from "./spinner";
 
-const apiData = {
-  active: 6,
-  completed: 4,
-  totalPayout: 12,
-  hunters: 12,
-};
-
-export const BountiesStatsRow = () => {
+export const BountiesStatsRow: React.FC<{ stats: IStats }> = ({ stats }) => {
   return (
     <div className={styles.container}>
-      <BountyStatCell text={"ACTIVE BOUNTIES"} value={apiData.active} />
-      <BountyStatCell text={"COMPLETED BOUNTIES"} value={apiData.completed} />
+      <BountyStatCell text={"ACTIVE BOUNTIES"} value={stats?.active} />
+      <BountyStatCell text={"COMPLETED BOUNTIES"} value={stats?.completed} />
       <BountyStatCell
         text={"TOTAL PAYOUT"}
-        value={apiData.totalPayout}
+        value={stats?.totalPayout}
         unit={"USD*"}
       />
-      <BountyStatCell text={"HUNTERS"} value={apiData.hunters} />
+      <BountyStatCell text={"HUNTERS"} value={stats?.hunters} />
     </div>
   );
 };
@@ -30,12 +25,16 @@ const BountyStatCell: React.FC<{
   return (
     <div className={styles.cell}>
       <div>{text}</div>
-      <div className={styles.cellValue}>
-        {value}
-        <div className={styles.cellUnitWrapper}>
-          {unit && <div className={styles.cellUnit}>{unit}</div>}
+      {value ? (
+        <div className={styles.cellValue}>
+          {value}
+          <div className={styles.cellUnitWrapper}>
+            {unit && <div className={styles.cellUnit}>{unit}</div>}
+          </div>
         </div>
-      </div>
+      ) : (
+        <Spinner />
+      )}
     </div>
   );
 };

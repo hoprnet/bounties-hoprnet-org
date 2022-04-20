@@ -17,3 +17,8 @@
   row-gap: 58px;
   justify-content: center;
 }
+
+.spinnerWrapper {
+  width: 100%;
+  text-align: center;
+}

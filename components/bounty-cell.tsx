@@ -1,20 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import { BountyStatusE, IBounty } from "../shared/bounties";
 import styles from "../styles/components/bounty-cell.module.css";
-
-export enum BountyStatusE {
-  COMPLETED = "COMPLETED",
-  TAKEN = "TAKEN",
-}
-
-export interface IBounty {
-  date: string;
-  status: BountyStatusE;
-  price: number;
-  title: string;
-  description: string;
-  url: string;
-}
 
 export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
   bounty,
