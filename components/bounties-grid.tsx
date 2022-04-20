@@ -13,15 +13,15 @@ export const BountiesGrid: React.FC<{
         {bounties &&
           bounties.map((bounty) =>
             showcase ? (
-              <a
-                key={bounty.url}
-                href={bounty.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <BountyCell bounty={bounty} showcase={showcase} />
-              </a>
+              // <a
+              //   key={bounty.url}
+              //   href={bounty.url}
+              //   target="_blank"
+              //   rel="noopener noreferrer"
+              // >
+              <BountyCell bounty={bounty} showcase={showcase} />
             ) : (
+              // </a>
               <BountyCell
                 key={bounty.url}
                 bounty={bounty}

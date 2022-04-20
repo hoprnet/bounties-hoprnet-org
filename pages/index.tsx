@@ -42,7 +42,7 @@ const Home: NextPage = () => {
           <div className={`${styles.wideText} ${styles.shareIdeasText}`}>
             Don’t see a bounty for you? Announce your interest in being a hunter
             and share your bounty ideas in the{" "}
-            <a href="/" className={styles.linkStyle}>
+            <a href="https://google.com" className={styles.linkStyle}>
               bounty forum
             </a>
             .

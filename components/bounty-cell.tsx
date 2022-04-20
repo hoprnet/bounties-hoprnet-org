@@ -36,11 +36,7 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
       </div>
       {showcase && (
         <div className={styles.showcaseFooter}>
-          <a
-            href="https://google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={url} target="_blank" rel="noopener noreferrer">
             <div className={styles.showcaseBadge}>GITHUB</div>
           </a>
           <a

@@ -6,9 +6,9 @@ export const Navbar = () => {
   return (
     <div className={styles.container}>
       <Link href="/">
-        <a href="/" className={styles.hoprLogo}>
+        <span className={styles.hoprLogo}>
           <Image src="/logo.svg" height={60} width={120} alt="hopr" />
-        </a>
+        </span>
       </Link>
       <div className={styles.linksRow}>
         <Link href="/about-us">
