@@ -36,12 +36,10 @@
   display: flex;
 }
 .cellUnit {
-  position: absolute;
-  bottom: 10px;
-  left: 6px;
+  position: relative;
+  display: flex;
+  padding-left: 5px;
+  align-items: flex-end;
   font-size: initial;
   color: #414141;
-}
-.cellUnitWrapper {
-  position: relative;
 }

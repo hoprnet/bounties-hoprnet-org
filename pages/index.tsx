@@ -99,7 +99,10 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className={`${styles.centeringWrapper} ${styles.asterixText}`}>
+        <div
+          className={`${styles.centeringWrapper} ${styles.asterixText}`}
+          id="amount_disclaimer"
+        >
           <div className={styles.wideText}>
             * Bounties are valued in USD but paid out in HOPR tokens
           </div>

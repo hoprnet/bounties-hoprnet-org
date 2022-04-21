@@ -28,9 +28,7 @@ const BountyStatCell: React.FC<{
       {value ? (
         <div className={styles.cellValue}>
           {value}
-          <div className={styles.cellUnitWrapper}>
-            {unit && <div className={styles.cellUnit}>{unit}</div>}
-          </div>
+          {unit && <pre className={styles.cellUnit}>{unit}</pre>}
         </div>
       ) : (
         <Spinner />
