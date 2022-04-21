@@ -31,6 +31,8 @@ export default async function handler(
   res: NextApiResponse<IStats>
 ) {
   const stats = await getStats();
+
+  res.setHeader("Cache-Control", "s-maxage=120");
   res.status(200).json({
     active: stats.N_ACTIVE_BOUNTIES,
     completed: stats.N_COMPLETED_BOUNTIES,

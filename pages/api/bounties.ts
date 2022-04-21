@@ -63,6 +63,7 @@ export default async function handler(
 ) {
   const bounties = await getBounties();
 
+  res.setHeader("Cache-Control", "s-maxage=120");
   res.status(200).json({
     bounties,
   });
