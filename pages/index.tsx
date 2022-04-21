@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import { BountiesGrid } from "../components/bounties-grid";
 import { BountiesStatsRow } from "../components/bounties-stats-row";
@@ -14,10 +15,14 @@ const Home: NextPage = () => {
 
   return (
     <div>
+      <Head>
+        <title>HOPR bounties</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Navbar />
-      <div className={styles.gradient} />
+      <div className="gradient-bg" />
       <div className={styles.robotsImage}>
-        <Image src="/Hero-BG-png.png" height={400} width={588} />
+        <Image src="/hopr-bounty-hero.png" height={400} width={588} />
       </div>
       <div className={styles.bountiesStatsWrapper}>
         <BountiesStatsRow stats={stats.data?.data as any} />
@@ -42,7 +47,11 @@ const Home: NextPage = () => {
           <div className={`${styles.wideText} ${styles.shareIdeasText}`}>
             Don’t see a bounty for you? Announce your interest in being a hunter
             and share your bounty ideas in the{" "}
-            <a href="https://google.com" className={styles.linkStyle}>
+            <a
+              href="https://forum.hoprnet.org/c/hopr-bounty-program/69"
+              target="_blank"
+              className={styles.linkStyle}
+            >
               bounty forum
             </a>
             .
@@ -53,7 +62,7 @@ const Home: NextPage = () => {
           <div className={styles.sectionWrapper}>
             <div>
               <Image
-                src={"/Section-img.png"}
+                src={"/section-robot.png"}
                 height={400}
                 width={325}
                 layout="intrinsic"

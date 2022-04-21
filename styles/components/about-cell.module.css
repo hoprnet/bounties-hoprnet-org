@@ -5,10 +5,13 @@
 }
 .icon {
   align-self: center;
-  height: 140px;
-  width: 140px;
+  height: 126px;
+  width: 126px;
   border-radius: 50%;
   background-color: #000050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .title {
   padding-top: 24px;

@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { CSSProperties } from "react";
 import { AboutCell } from "../components/about-cell";
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
@@ -9,7 +8,7 @@ const AboutUsPage: NextPage = () => {
   return (
     <div>
       <Navbar />
-      <div className={styles.gradient} />
+      <div className="gradient-bg" />
       <div className={styles.contentWrapper}>
         <div className={styles.mainTitle}>ABOUT</div>
         <div className={styles.titleStyle}>ABOUT THE HOPR BOUNTY PROGRAM</div>
@@ -17,14 +16,17 @@ const AboutUsPage: NextPage = () => {
           <AboutCell
             title="BUILD"
             description="Create dApps, services, tools and more to expand the HOPR ecosystem and help build a private web3"
+            icon="/hopr-build.png"
           />
           <AboutCell
             title="EARN"
             description="Earn HOPR tokens for completing bounties, along with additional rewards for dedicated hunters"
+            icon="/hopr-earn.png"
           />
           <AboutCell
             title="GROW"
             description="Lock HOPR tokens in your node to relay user data and cover traffic. The more you stake, the more data you can relay, and the more you earn. A quarter of all HOPR tokens are available only to stakers as a reward for relaying cover traffic."
+            icon="/hopr-grow.png"
           />
         </div>
         <div className={styles.titleStyle}>ABOUT HOPR</div>
@@ -33,8 +35,8 @@ const AboutUsPage: NextPage = () => {
             <iframe
               width="460"
               height="259"
-              src=""
-              title="YouTube video player"
+              src="https://player.vimeo.com/video/508840889"
+              title="Vimeo video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -55,7 +57,7 @@ const AboutUsPage: NextPage = () => {
             <br />
             <div>
               <a
-                href="https://twitter.com/hoprnet"
+                href="https://hoprnet.org/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}
@@ -64,7 +66,7 @@ const AboutUsPage: NextPage = () => {
               </a>
               {", "}
               <a
-                href="https://twitter.com/hoprnet"
+                href="https://github.com/hoprnet/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.link}

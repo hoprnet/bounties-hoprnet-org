@@ -12,7 +12,7 @@ const ShowcasePage: NextPage = () => {
   return (
     <div>
       <Navbar />
-      <div className={styles.gradient} />
+      <div className="gradient-bg" />
       <div className={styles.titleStyle}>SHOWCASE</div>
       <div className={styles.gridWrapper}>
         <BountiesGrid bounties={bounties.data?.data?.bounties} showcase />

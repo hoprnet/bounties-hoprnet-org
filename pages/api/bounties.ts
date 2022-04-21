@@ -1,22 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { exampleBounty, IBounty } from "../../shared/bounties";
+import { type IBounty } from "../../shared/bounties";
 
 type Data = {
   bounties: IBounty[];
 };
 
 export default function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   res.status(200).json({
-    bounties: [
-      exampleBounty,
-      exampleBounty,
-      exampleBounty,
-      exampleBounty,
-      exampleBounty,
-      exampleBounty,
-    ],
+    bounties: [],
   });
 }

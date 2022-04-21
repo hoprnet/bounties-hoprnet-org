@@ -1,9 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { exampleStats, IStats } from "../../shared/stats";
+import type { IStats } from "../../shared/stats";
 
 export default function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse<IStats>
 ) {
-  res.status(200).json(exampleStats);
+  res.status(200).json({
+    active: 3,
+    completed: 3,
+    totalPayout: 3504,
+    hunters: 4,
+  });
 }
