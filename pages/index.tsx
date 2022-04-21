@@ -1,17 +1,30 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
+import { useMemo } from "react";
 import { BountiesGrid } from "../components/bounties-grid";
 import { BountiesStatsRow } from "../components/bounties-stats-row";
 import { Footer } from "../components/footer";
 import { Navbar } from "../components/navbar";
+import { BountyStatusE, IBounty } from "../shared/bounties";
 import styles from "../styles/index.module.css";
 import useSWR from "swr";
 import axios from "axios";
 
+const BOUNTY_SORT_PREFERENCE = [BountyStatusE.AVAILABLE, BountyStatusE.TAKEN];
+
 const Home: NextPage = () => {
   const bounties = useSWR("/api/bounties", axios);
-  const stats = useSWR("/api/stats", axios);
+  const stats = useSWR("/api/stats", axios).data?.data || {};
+  const bountiesSorted: IBounty[] = useMemo(() => {
+    return ((bounties.data?.data?.bounties || []) as IBounty[])
+      .filter((b) => BOUNTY_SORT_PREFERENCE.includes(b.status))
+      .sort((a, b) => {
+        return (
+          BOUNTY_SORT_PREFERENCE.findIndex((v) => v === a.status) -
+          BOUNTY_SORT_PREFERENCE.findIndex((v) => v === b.status)
+        );
+      });
+  }, [bounties]);
 
   return (
     <div>
@@ -26,7 +39,7 @@ const Home: NextPage = () => {
         />
       </div>
       <div className={styles.bountiesStatsWrapper}>
-        <BountiesStatsRow stats={stats.data?.data as any} />
+        <BountiesStatsRow stats={stats} />
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.textContainer}>
@@ -42,7 +55,7 @@ const Home: NextPage = () => {
           OPEN BOUNTIES
         </div>
         <div className={styles.gridWrapper}>
-          <BountiesGrid bounties={bounties.data?.data?.bounties} />
+          <BountiesGrid bounties={bountiesSorted} />
         </div>
         <div className={styles.centeringWrapper}>
           <div className={`${styles.wideText} ${styles.shareIdeasText}`}>

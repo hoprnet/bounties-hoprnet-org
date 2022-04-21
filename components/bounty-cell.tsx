@@ -7,50 +7,63 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
   bounty,
   showcase,
 }) => {
-  const { price, status, title, url } = bounty;
   return (
-    <div className={styles.container} key={url}>
-      <div className={styles.bountyImgWrapper}>
-        <Image
-          src={"/Tile-BG.png"}
-          alt="bounty background"
-          height={220}
-          width={240}
-        />
-      </div>
-      <div className={styles.title}>{title}</div>
-      {/* <div className={styles.description}>{description}</div> */}
+    <div className={styles.container} key={bounty.bountyServiceUrl}>
+      <a href={bounty.bountyGithubUrl} target="_blank" rel="noreferrer">
+        <div className={styles.bountyImgWrapper}>
+          <Image
+            src={"/Tile-BG.png"}
+            alt="bounty background"
+            height={220}
+            width={240}
+          />
+        </div>
+        <div className={styles.title}>{bounty.title}</div>
+        {bounty.description ? (
+          <div className={styles.description}>{bounty.description}</div>
+        ) : null}
+      </a>
       <div className={styles.footer}>
         {/* <div className={styles.dateWrapper}>Date finished: {date}</div> */}
         <div className={styles.statusWrapper}>
           {!showcase && (
             <div
               className={`${styles.statusBadge} ${
-                status === BountyStatusE.COMPLETED
+                bounty.status === BountyStatusE.COMPLETED ||
+                bounty.status === BountyStatusE.AVAILABLE
                   ? styles.completedBadge
                   : styles.takenBadge
               }`}
             >
-              {status}
+              {bounty.status}
             </div>
           )}
           <div className={styles.bountyPriceWrapper}>
-            BOUNTY: <span className={styles.priceWrapper}>{price}</span> ETH
+            BOUNTY: <span className={styles.priceWrapper}>{bounty.price}</span>{" "}
+            USD
           </div>
         </div>
       </div>
-      {showcase && (
+      {showcase && (bounty.submissionUrl || bounty.demoUrl) && (
         <div className={styles.showcaseFooter}>
-          <a href={url} target="_blank" rel="noopener noreferrer">
-            <div className={styles.showcaseBadge}>GITHUB</div>
-          </a>
-          <a
-            href="https://google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div className={styles.showcaseBadge}>DEMO-PAGE</div>
-          </a>
+          {bounty.submissionUrl ? (
+            <a
+              href={bounty.submissionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className={styles.showcaseBadge}>GITHUB</div>
+            </a>
+          ) : null}
+          {bounty.demoUrl ? (
+            <a
+              href="https://google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className={styles.showcaseBadge}>DEMO-PAGE</div>
+            </a>
+          ) : null}
         </div>
       )}
     </div>
