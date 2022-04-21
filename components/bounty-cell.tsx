@@ -56,11 +56,7 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
             </a>
           ) : null}
           {bounty.demoUrl ? (
-            <a
-              href="https://google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={bounty.demoUrl} target="_blank" rel="noopener noreferrer">
               <div className={styles.showcaseBadge}>DEMO-PAGE</div>
             </a>
           ) : null}
