@@ -38,12 +38,13 @@ const getBounties = async (): Promise<IBounty[]> => {
           title: row.title,
           status,
           price: row["prize (USD)"],
-          bountyGithubUrl: row.link || "",
+          bountyGithubUrl: row.link,
           bountyServiceUrl: row["service url"],
           submissionUrl: row["submission url"],
           demoUrl: row["demo url"],
           description: row["description"],
-        };
+          date: row["submitted on"].slice(1),
+        } as IBounty;
       } catch (error) {
         console.error(error);
         return {} as IBounty;

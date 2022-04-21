@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 import { BountyStatusE, IBounty } from "../shared/bounties";
 import styles from "../styles/components/bounty-cell.module.css";
@@ -9,8 +9,9 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
 }) => {
   return (
     <div className={styles.container} key={bounty.bountyServiceUrl}>
-      <a href={bounty.bountyGithubUrl} target="_blank" rel="noreferrer">
-        {/* <div className={styles.bountyImgWrapper}>
+      <div className={styles.topContainer}>
+        <a href={bounty.bountyGithubUrl} target="_blank" rel="noreferrer">
+          {/* <div className={styles.bountyImgWrapper}>
           <Image
             src={"/Tile-BG.png"}
             alt="bounty background"
@@ -18,13 +19,16 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
             width={240}
           />
         </div> */}
-        <div className={styles.title}>{bounty.title}</div>
-        {bounty.description ? (
-          <div className={styles.description}>{bounty.description}</div>
-        ) : null}
-      </a>
+          <div className={styles.title}>{bounty.title}</div>
+          {bounty.description ? (
+            <div className={styles.description}>{bounty.description}</div>
+          ) : null}
+        </a>
+      </div>
       <div className={styles.footer}>
-        {/* <div className={styles.dateWrapper}>Date finished: {date}</div> */}
+        {bounty.date && bounty.status === BountyStatusE.COMPLETED ? (
+          <div className={styles.dateWrapper}>Date finished: {bounty.date}</div>
+        ) : null}
         <div className={styles.statusWrapper}>
           {!showcase && (
             <div

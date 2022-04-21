@@ -11,19 +11,27 @@ import useSWR from "swr";
 import axios from "axios";
 
 const BOUNTY_SORT_PREFERENCE = [BountyStatusE.AVAILABLE, BountyStatusE.TAKEN];
+const filterAndSortBounties = (bounties: IBounty[]): IBounty[] => {
+  return (
+    bounties
+      // remove statuses which we don't care about
+      .filter((bounty) => BOUNTY_SORT_PREFERENCE.includes(bounty.status))
+      // sort first status, then date
+      .sort((a, b) => {
+        return (
+          BOUNTY_SORT_PREFERENCE.findIndex((v) => v === a.status) -
+            BOUNTY_SORT_PREFERENCE.findIndex((v) => v === b.status) ||
+          a.date.localeCompare(b.date)
+        );
+      })
+  );
+};
 
 const Home: NextPage = () => {
   const bounties = useSWR("/api/bounties", axios);
   const stats = useSWR("/api/stats", axios).data?.data || {};
   const bountiesSorted: IBounty[] = useMemo(() => {
-    return ((bounties.data?.data?.bounties || []) as IBounty[])
-      .filter((b) => BOUNTY_SORT_PREFERENCE.includes(b.status))
-      .sort((a, b) => {
-        return (
-          BOUNTY_SORT_PREFERENCE.findIndex((v) => v === a.status) -
-          BOUNTY_SORT_PREFERENCE.findIndex((v) => v === b.status)
-        );
-      });
+    return filterAndSortBounties(bounties.data?.data?.bounties || []);
   }, [bounties]);
 
   return (
