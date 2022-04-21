@@ -1,11 +1,11 @@
 {
   "headers": [
     {
-      "source": "/api/*",
+      "source": "/api/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "max-age=0, s-maxage=120"
+          "value": "max-age=120, s-maxage=120"
         }
       ]
     }
