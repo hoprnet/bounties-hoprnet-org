@@ -32,7 +32,7 @@ export default async function handler(
 ) {
   const stats = await getStats();
 
-  res.setHeader("Cache-Control", "s-maxage=120");
+  res.setHeader("Cache-Control", "s-maxage=600");
   res.status(200).json({
     active: stats.N_ACTIVE_BOUNTIES,
     completed: stats.N_COMPLETED_BOUNTIES,
