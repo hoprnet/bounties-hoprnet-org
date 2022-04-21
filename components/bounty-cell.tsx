@@ -7,16 +7,21 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
   bounty,
   showcase,
 }) => {
-  const { date, price, status, title, description, url } = bounty;
+  const { price, status, title, url } = bounty;
   return (
     <div className={styles.container} key={url}>
       <div className={styles.bountyImgWrapper}>
-        <Image src={"/Tile-BG.png"} height={220} width={240} />
+        <Image
+          src={"/Tile-BG.png"}
+          alt="bounty background"
+          height={220}
+          width={240}
+        />
       </div>
       <div className={styles.title}>{title}</div>
-      <div className={styles.description}>{description}</div>
+      {/* <div className={styles.description}>{description}</div> */}
       <div className={styles.footer}>
-        <div className={styles.dateWrapper}>Date finished: {date}</div>
+        {/* <div className={styles.dateWrapper}>Date finished: {date}</div> */}
         <div className={styles.statusWrapper}>
           {!showcase && (
             <div

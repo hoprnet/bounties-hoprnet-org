@@ -22,7 +22,12 @@ const Home: NextPage = () => {
       <Navbar />
       <div className="gradient-bg" />
       <div className={styles.robotsImage}>
-        <Image src="/hopr-bounty-hero.png" height={400} width={588} />
+        <Image
+          src="/hopr-bounty-hero.png"
+          alt="hopr bounty hero"
+          height={400}
+          width={588}
+        />
       </div>
       <div className={styles.bountiesStatsWrapper}>
         <BountiesStatsRow stats={stats.data?.data as any} />
@@ -50,6 +55,7 @@ const Home: NextPage = () => {
             <a
               href="https://forum.hoprnet.org/c/hopr-bounty-program/69"
               target="_blank"
+              rel="noreferrer"
               className={styles.linkStyle}
             >
               bounty forum
@@ -63,6 +69,7 @@ const Home: NextPage = () => {
             <div>
               <Image
                 src={"/section-robot.png"}
+                alt="section robot"
                 height={400}
                 width={325}
                 layout="intrinsic"

@@ -15,7 +15,13 @@ export const CashoutCell: React.FC<{
     >
       <div className={styles.iconCell}>
         <div className={styles.icon}>
-          <Image src={icon} height={126} width={126} layout="intrinsic" />
+          <Image
+            src={icon}
+            height={126}
+            width={126}
+            alt={`${title} icon`}
+            layout="intrinsic"
+          />
         </div>
       </div>
       <div className={styles.cell}>

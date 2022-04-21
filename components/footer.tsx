@@ -9,6 +9,7 @@ export const Footer = () => {
           <Image
             layout="fixed"
             src={"/hopr-favicon.svg"}
+            alt="hopr"
             width="58"
             height="58"
           />
