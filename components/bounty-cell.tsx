@@ -10,14 +10,14 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
   return (
     <div className={styles.container} key={bounty.bountyServiceUrl}>
       <a href={bounty.bountyGithubUrl} target="_blank" rel="noreferrer">
-        <div className={styles.bountyImgWrapper}>
+        {/* <div className={styles.bountyImgWrapper}>
           <Image
             src={"/Tile-BG.png"}
             alt="bounty background"
             height={220}
             width={240}
           />
-        </div>
+        </div> */}
         <div className={styles.title}>{bounty.title}</div>
         {bounty.description ? (
           <div className={styles.description}>{bounty.description}</div>
