@@ -1,10 +1,15 @@
 @media (max-width: 1000px) {
-  .titleStyle {
-    scale: 0.8;
+  .robotsImage {
+    margin-top: -80px;
   }
 }
 
 @media (max-width: 650px) {
+  .titleStyle {
+    font-size: 30px !important;
+    line-height: 30px !important;
+  }
+
   .sectionWrapper {
     display: grid;
     grid-template-columns: 1fr !important;
@@ -15,11 +20,8 @@
   .ecosystemText {
     padding: 20px 20px !important;
   }
-}
-
-@media (max-width: 460px) {
   .bountiesStatsWrapper {
-    top: 140px !important;
+    top: 70px !important;
   }
 }
 
@@ -38,6 +40,8 @@
 .robotsImage {
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: -1;
 }
 .bountiesStatsWrapper {
   position: absolute;
@@ -96,4 +100,7 @@
   grid-template-columns: minmax(200px, 325px) minmax(300px, 500px);
   gap: 20px;
   justify-content: center;
+}
+.sectionImage {
+  padding-top: 20px;
 }

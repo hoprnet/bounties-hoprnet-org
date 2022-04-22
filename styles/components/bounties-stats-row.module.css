@@ -4,12 +4,24 @@
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 650px) {
   .container {
-    gap: 0px !important;
+    gap: 5px !important;
   }
   .cell {
-    scale: 0.8 !important;
+    padding: 4px !important;
+    height: 46px !important;
+    width: 132px !important;
+    font-size: 10px !important;
+  }
+  .cellValue {
+    font-size: 29px !important;
+    line-height: 21px !important;
+  }
+  .cellUnit {
+    font-size: 10px !important;
+    line-height: 20px !important;
+    margin: 7px 0px 0px 0px !important;
   }
 }
 
@@ -27,8 +39,8 @@
   padding: 10px;
   border-radius: 9px;
   background-color: #f8f8fb;
-  min-height: 100px;
-  min-width: 200px;
+  height: 100px;
+  width: 200px;
 }
 .cellValue {
   font-size: 50px;

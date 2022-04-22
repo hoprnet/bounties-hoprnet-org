@@ -1,8 +1,13 @@
 import Head from "next/head";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import { HamburgerMenu } from "../components/hamburgerMenu";
+import { StateContext } from "../state/context";
+import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [hamburgerMenuOpen, toggleHamburgerMenu] = useState(false);
+
   return (
     <>
       <Head>
@@ -10,7 +15,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="/hopr-favicon.svg" />
       </Head>
-      <Component {...pageProps} />
+      <StateContext.Provider value={{ hamburgerMenuOpen, toggleHamburgerMenu }}>
+        <HamburgerMenu />
+        <Component {...pageProps} />
+      </StateContext.Provider>
     </>
   );
 }

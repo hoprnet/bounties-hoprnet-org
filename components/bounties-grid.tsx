@@ -20,7 +20,7 @@ export const BountiesGrid: React.FC<{
           ))}
       </div>
       <div className={styles.spinnerWrapper}>
-        {(!bounties || bounties.length <= 0) && <Spinner />}
+        {(!bounties || bounties.length <= 0) && <Spinner size={50} />}
       </div>
     </div>
   );
