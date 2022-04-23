@@ -1,12 +1,8 @@
 @media (max-width: 1000px) {
-  /* .container {
-    grid-template-columns: 1fr 1fr !important;
-  } */
   .container {
     gap: 20px !important;
   }
   .cell {
-    /* padding: 4px !important; */
     height: 80px !important;
     width: 172px !important;
     font-size: 13px !important;
@@ -23,9 +19,6 @@
 }
 
 @media (max-width: 760px) {
-  /* .cell {
-    scale: 0.8;
-  } */
   .cell {
     padding: 4px !important;
     height: 46px !important;
