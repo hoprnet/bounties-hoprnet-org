@@ -10,6 +10,10 @@
     line-height: 30px !important;
   }
 
+  .textContainer {
+    padding-top: 30px !important;
+  }
+
   .sectionWrapper {
     display: grid;
     grid-template-columns: 1fr !important;
@@ -26,7 +30,7 @@
 }
 
 .textContainer {
-  padding-top: 20px;
+  padding-top: 80px;
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
@@ -42,6 +46,7 @@
   justify-content: center;
   position: relative;
   z-index: -1;
+  padding: 0px 10px;
 }
 .bountiesStatsWrapper {
   position: absolute;

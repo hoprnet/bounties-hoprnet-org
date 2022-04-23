@@ -5,37 +5,45 @@ import { Spinner } from "./spinner";
 
 export const BountiesStatsRow: React.FC<{ stats: IStats }> = ({ stats }) => {
   const windowSize = useWindowSize();
-  const mobile = (windowSize.width || 0) <= 650;
+  // because of design to fit bounties in one row on tablet we make cells look like mobile ones faster
+  // thats why here 'mobile' starts from 760px instead of usual 650px
+  const mobile = (windowSize.width || 0) <= 760;
+  const tablet = (windowSize.width || 0) <= 1000;
+  const resolution = mobile ? "mobile" : tablet ? "tablet" : "pc";
 
   return (
     <div className={styles.container}>
       <BountyStatCell
         text={"AVAILABLE BOUNTIES"}
         value={stats?.active}
-        mobile={mobile}
+        resolution={resolution}
       />
       <BountyStatCell
         text={"COMPLETED BOUNTIES"}
         value={stats?.completed}
-        mobile={mobile}
+        resolution={resolution}
       />
       <BountyStatCell
         text={"TOTAL PAYOUT"}
         value={stats?.totalPayout}
         unit={"USD*"}
-        mobile={mobile}
+        resolution={resolution}
       />
-      <BountyStatCell text={"HUNTERS"} value={stats?.hunters} mobile={mobile} />
+      <BountyStatCell
+        text={"HUNTERS"}
+        value={stats?.hunters}
+        resolution={resolution}
+      />
     </div>
   );
 };
 
 const BountyStatCell: React.FC<{
-  mobile: boolean;
+  resolution: "mobile" | "tablet" | "pc";
   text: string;
   value: number;
   unit?: string;
-}> = ({ text, value, unit, mobile }) => {
+}> = ({ text, value, unit, resolution }) => {
   return (
     <div className={styles.cell}>
       <div>{text}</div>
@@ -45,7 +53,11 @@ const BountyStatCell: React.FC<{
           {unit && <pre className={styles.cellUnit}>{unit}</pre>}
         </div>
       ) : (
-        <Spinner size={mobile ? 20 : 50} />
+        <Spinner
+          size={
+            resolution === "mobile" ? 20 : resolution === "tablet" ? 40 : 50
+          }
+        />
       )}
     </div>
   );

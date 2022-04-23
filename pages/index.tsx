@@ -50,16 +50,16 @@ const Home: NextPage = () => {
           />
         ) : (windowSize.width || 0) <= 1000 ? (
           <Image
-            src="/hopr-bounty-hero.png"
+            src="/HOPR_BOUNTY_HERO_TABLET.png"
             alt="hopr bounty hero"
-            height={400}
-            width={588}
+            height={584}
+            width={693}
           />
         ) : (
           <Image
             src="/hopr-bounty-hero.png"
             alt="hopr bounty hero"
-            height={400}
+            height={440}
             width={588}
           />
         )}
