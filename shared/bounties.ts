@@ -7,10 +7,9 @@ export enum BountyStatusE {
 export interface IBounty {
   title: string;
   status: BountyStatusE;
-  price: number;
+  price: string;
   description: string;
   date: string;
-  bountyGithubUrl: string;
   bountyServiceUrl?: string;
   submissionUrl?: string;
   demoUrl?: string;

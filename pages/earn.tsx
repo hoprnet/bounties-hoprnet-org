@@ -12,7 +12,7 @@ const EarnPage: NextPage = () => {
       <div className={styles.contentWrapper}>
         <div className={`${styles.titleStyle} ${styles.mainTitle}`}>EARN</div>
         <div className={`${styles.titleStyle} ${styles.howToCashOutTitle}`}>
-          HOW TO CASH OUT
+          BUILD AND EARN WITH HOPR
         </div>
         <div className={styles.cashoutGrid}>
           <CashoutCell

@@ -1,35 +1,14 @@
-@media (max-width: 650px) {
-  .container {
-    grid-template-columns: 140px auto 80px !important;
-  }
-  .linksRow {
-    gap: 10px !important;
-    padding: 0px 20px;
-  }
-  .githubIcon {
-    margin-right: 5px !important;
-  }
-}
-
-@media (max-width: 460px) {
-  .container {
-    grid-template-rows: 1fr 1fr;
-  }
-  .linksRow {
-    grid-row: 2;
-    grid-column-start: 1;
-    grid-column-end: 4;
-  }
-  .githubIcon {
-    grid-column: 3;
-  }
-}
-
 .container {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   min-height: 80px;
   background-color: white;
+}
+.containerMobile {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  height: 80px;
 }
 .hoprLogo {
   width: fit-content;
@@ -37,6 +16,10 @@
   align-self: center;
   margin-bottom: -5px;
   cursor: pointer;
+}
+.hoprLogoMobile {
+  cursor: pointer;
+  padding: 5px;
 }
 .linksRow {
   display: flex;
@@ -48,4 +31,11 @@
   align-self: center;
   justify-self: end;
   margin-right: 20px;
+}
+
+.hamburgerWrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  grid-column: 4;
 }

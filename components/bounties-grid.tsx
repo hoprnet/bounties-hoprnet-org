@@ -13,14 +13,14 @@ export const BountiesGrid: React.FC<{
         {bounties &&
           bounties.map((bounty) => (
             <BountyCell
-              key={bounty.bountyGithubUrl}
+              key={bounty.bountyServiceUrl}
               bounty={bounty}
               showcase={showcase}
             />
           ))}
       </div>
       <div className={styles.spinnerWrapper}>
-        {(!bounties || bounties.length <= 0) && <Spinner />}
+        {(!bounties || bounties.length <= 0) && <Spinner size={50} />}
       </div>
     </div>
   );
