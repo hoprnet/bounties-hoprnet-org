@@ -15,7 +15,7 @@ export const BountiesStatsRow: React.FC<{ stats: IStats }> = ({ stats }) => {
     <div className={styles.container}>
       <BountyStatCell
         text={"AVAILABLE BOUNTIES"}
-        value={stats?.active}
+        value={stats?.available}
         resolution={resolution}
       />
       <BountyStatCell

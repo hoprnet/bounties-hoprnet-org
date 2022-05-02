@@ -34,6 +34,7 @@ export default async function handler(
 
   res.setHeader("Cache-Control", "s-maxage=600");
   res.status(200).json({
+    available: stats.N_AVAIL_BOUNTIES,
     active: stats.N_ACTIVE_BOUNTIES,
     completed: stats.N_COMPLETED_BOUNTIES,
     totalPayout: stats.TOTAL_AMOUNT_AWARDED_USD,
