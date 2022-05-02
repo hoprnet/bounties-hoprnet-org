@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import React from "react";
 import { BountyStatusE, IBounty } from "../shared/bounties";
 import styles from "../styles/components/bounty-cell.module.css";
@@ -10,15 +9,7 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
   return (
     <div className={styles.container} key={bounty.bountyServiceUrl}>
       <div className={styles.topContainer}>
-        <a href={bounty.bountyGithubUrl} target="_blank" rel="noreferrer">
-          {/* <div className={styles.bountyImgWrapper}>
-          <Image
-            src={"/Tile-BG.png"}
-            alt="bounty background"
-            height={220}
-            width={240}
-          />
-        </div> */}
+        <a href={bounty.bountyServiceUrl} target="_blank" rel="noreferrer">
           <div className={styles.title}>{bounty.title}</div>
           {bounty.description ? (
             <div className={styles.description}>{bounty.description}</div>

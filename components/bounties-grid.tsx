@@ -13,7 +13,7 @@ export const BountiesGrid: React.FC<{
         {bounties &&
           bounties.map((bounty) => (
             <BountyCell
-              key={bounty.bountyGithubUrl}
+              key={bounty.bountyServiceUrl}
               bounty={bounty}
               showcase={showcase}
             />

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BountiesGrid } from "../components/bounties-grid";
 import { BountiesStatsRow } from "../components/bounties-stats-row";
 import { Footer } from "../components/footer";
@@ -10,6 +10,9 @@ import styles from "../styles/index.module.css";
 import useSWR from "swr";
 import axios from "axios";
 import { useWindowSize } from "../hooks/windowSize";
+import lottie, { AnimationItem } from "lottie-web";
+import robotsAnimation from "../animation/anim_hero.json";
+import terminalRobotAnimation from "../animation/anim_robot_terminal.json";
 
 const BOUNTY_SORT_PREFERENCE = [BountyStatusE.AVAILABLE, BountyStatusE.TAKEN];
 const filterAndSortBounties = (bounties: IBounty[]): IBounty[] => {
@@ -36,10 +39,43 @@ const Home: NextPage = () => {
     return filterAndSortBounties(bounties.data?.data?.bounties || []);
   }, [bounties]);
 
+  // nextjs remounts page on first load to properly hydrate it
+  // this flag is to prevent loading animation twice
+  let animationLoaded = false;
+  const [robotsAnimObj, setRobotsAnimObj] = useState<AnimationItem>();
+  useEffect(() => {
+    // check to prevent double animation load on page remount
+    if (!animationLoaded) {
+      setRobotsAnimObj(
+        lottie.loadAnimation({
+          container: document.querySelector("#robotsAnimation")!,
+          animationData: robotsAnimation,
+        })
+      );
+      lottie.loadAnimation({
+        container: document.querySelector("#terminalRobotAnimation")!,
+        animationData: terminalRobotAnimation,
+      });
+    }
+    animationLoaded = true;
+  }, []);
+
+  // for now we only have animated svgs for pc so we hide it on mobile resolutions
+  useEffect(() => {
+    if (!robotsAnimObj) return;
+
+    if ((windowSize.width || 0) <= 1000) {
+      robotsAnimObj.hide();
+    } else {
+      robotsAnimObj.show();
+    }
+  }, [windowSize.width, robotsAnimObj]);
+
   return (
     <div>
       <Navbar />
       <div className="gradient-bg" />
+      <div className={styles.robotsAnimatedImage} id="robotsAnimation"></div>
       <div className={styles.robotsImage}>
         {(windowSize.width || 0) <= 650 ? (
           <Image
@@ -55,14 +91,7 @@ const Home: NextPage = () => {
             height={584}
             width={693}
           />
-        ) : (
-          <Image
-            src="/hopr-bounty-hero.png"
-            alt="hopr bounty hero"
-            height={440}
-            width={588}
-          />
-        )}
+        ) : null}
       </div>
       <div className={styles.bountiesStatsWrapper}>
         <BountiesStatsRow stats={stats} />
@@ -73,9 +102,8 @@ const Home: NextPage = () => {
             HELP BUILD THE FUTURE OF WEB3 PRIVACY
           </div>
           <div className={`${styles.wideText} ${styles.mainSubtext}`}>
-            {(windowSize.width || 0) <= 1000
-              ? "Whether it’s individuals, companies or institutions – the HOPR protocol provides full control over privacy, data and metadata. HOPR lays the groundwork for a more sovereign and safe internet. For everyone."
-              : "Join a passionate, skilled, and dedicated development community building free and open source privacy infrastructure for web3."}
+            Join a passionate, skilled, and dedicated development community
+            building free and open source privacy infrastructure for web3.
           </div>
         </div>
         <div className={`${styles.titleStyle} ${styles.openBountiesTitle}`}>
@@ -102,15 +130,10 @@ const Home: NextPage = () => {
         <div className={styles.titleStyle}>BE PART OF THE HOPR ECOSYSTEM</div>
         <div>
           <div className={styles.sectionWrapper}>
-            <div className={styles.sectionImage}>
-              <Image
-                src={"/section-robot.png"}
-                alt="section robot"
-                height={350}
-                width={325}
-                layout="intrinsic"
-              />
-            </div>
+            <div
+              className={styles.sectionImage}
+              id="terminalRobotAnimation"
+            ></div>
             <div className={`${styles.wideText} ${styles.ecosystemText}`}>
               HOPR is building the transport layer privacy needed to make web3
               work. Work with us to build dApps that change data privacy for
