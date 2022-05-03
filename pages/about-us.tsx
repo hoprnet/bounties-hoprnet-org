@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import { AboutCell } from "../components/about-cell";
-import { Footer } from "../components/footer";
-import { Navbar } from "../components/navbar";
+import { AboutCell } from "../src/components/about-cell";
+import { Footer } from "../src/components/footer";
+import { Navbar } from "../src/components/navbar";
 import styles from "../styles/about-us.module.css";
 
 const AboutUsPage: NextPage = () => {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../styles/components/cashout-cell.module.css";
+import styles from "../../styles/components/cashout-cell.module.css";
 
 export const CashoutCell: React.FC<{
   title: string;

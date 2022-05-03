@@ -1,21 +1,21 @@
 import type { NextPage } from "next";
+import type { Bounty } from "../shared/types";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { BountiesGrid } from "../components/bounties-grid";
-import { BountiesStatsRow } from "../components/bounties-stats-row";
-import { Footer } from "../components/footer";
-import { Navbar } from "../components/navbar";
-import { BountyStatusE, IBounty } from "../shared/bounties";
+import { BountiesGrid } from "../src/components/bounties-grid";
+import { BountiesStatsRow } from "../src/components/bounties-stats-row";
+import { Footer } from "../src/components/footer";
+import { Navbar } from "../src/components/navbar";
 import styles from "../styles/index.module.css";
 import useSWR from "swr";
 import axios from "axios";
-import { useWindowSize } from "../hooks/windowSize";
+import { useWindowSize } from "../src/hooks/windowSize";
 import lottie, { AnimationItem } from "lottie-web";
-import robotsAnimation from "../animation/anim_hero.json";
-import terminalRobotAnimation from "../animation/anim_robot_terminal.json";
+import robotsAnimation from "../src/animation/anim_hero.json";
+import terminalRobotAnimation from "../src/animation/anim_robot_terminal.json";
 
-const BOUNTY_SORT_PREFERENCE = [BountyStatusE.AVAILABLE, BountyStatusE.TAKEN];
-const filterAndSortBounties = (bounties: IBounty[]): IBounty[] => {
+const BOUNTY_SORT_PREFERENCE: Bounty["status"][] = ["AVAILABLE", "TAKEN"];
+const filterAndSortBounties = (bounties: Bounty[]): Bounty[] => {
   return (
     bounties
       // remove statuses which we don't care about
@@ -25,7 +25,7 @@ const filterAndSortBounties = (bounties: IBounty[]): IBounty[] => {
         return (
           BOUNTY_SORT_PREFERENCE.findIndex((v) => v === a.status) -
             BOUNTY_SORT_PREFERENCE.findIndex((v) => v === b.status) ||
-          a.date.localeCompare(b.date)
+          new Date(b.submittedOn).valueOf() - new Date(a.submittedOn).valueOf()
         );
       })
   );
@@ -33,9 +33,9 @@ const filterAndSortBounties = (bounties: IBounty[]): IBounty[] => {
 
 const Home: NextPage = () => {
   const windowSize = useWindowSize();
-  const bounties = useSWR("/api/bounties", axios);
+  const bounties = useSWR("/api/bounties/homepage", axios);
   const stats = useSWR("/api/stats", axios).data?.data || {};
-  const bountiesSorted: IBounty[] = useMemo(() => {
+  const bountiesSorted: Bounty[] = useMemo(() => {
     return filterAndSortBounties(bounties.data?.data?.bounties || []);
   }, [bounties]);
 

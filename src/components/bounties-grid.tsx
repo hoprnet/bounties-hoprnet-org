@@ -1,10 +1,10 @@
+import type { AnyBounty } from "../../shared/types";
 import { BountyCell } from "./bounty-cell";
-import styles from "../styles/components/bounties-grid.module.css";
-import { IBounty } from "../shared/bounties";
+import styles from "../../styles/components/bounties-grid.module.css";
 import { Spinner } from "./spinner";
 
 export const BountiesGrid: React.FC<{
-  bounties: IBounty[];
+  bounties: AnyBounty[];
   showcase?: boolean;
 }> = ({ bounties, showcase }) => {
   return (

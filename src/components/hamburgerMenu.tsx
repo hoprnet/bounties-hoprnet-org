@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/components/hamburgerMenu.module.css";
+import styles from "../../styles/components/hamburgerMenu.module.css";
 import { slide as Menu } from "react-burger-menu";
 import { useWindowSize } from "../hooks/windowSize";
 import React, { useContext, useState } from "react";

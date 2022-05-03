@@ -1,11 +1,11 @@
+import type { AnyBounty } from "../../shared/types";
 import React from "react";
-import { BountyStatusE, IBounty } from "../shared/bounties";
-import styles from "../styles/components/bounty-cell.module.css";
+import styles from "../../styles/components/bounty-cell.module.css";
 
-export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
-  bounty,
-  showcase,
-}) => {
+export const BountyCell: React.FC<{
+  bounty: AnyBounty;
+  showcase?: boolean;
+}> = ({ bounty, showcase }) => {
   return (
     <div className={styles.container} key={bounty.bountyServiceUrl}>
       <div className={styles.topContainer}>
@@ -17,15 +17,16 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
         </a>
       </div>
       <div className={styles.footer}>
-        {bounty.date && bounty.status === BountyStatusE.COMPLETED ? (
-          <div className={styles.dateWrapper}>Date finished: {bounty.date}</div>
+        {bounty.completedOn && bounty.status === "COMPLETED" ? (
+          <div className={styles.dateWrapper}>
+            Date finished: {new Date(bounty.completedOn).toDateString()}
+          </div>
         ) : null}
         <div className={styles.statusWrapper}>
           {!showcase && (
             <div
               className={`${styles.statusBadge} ${
-                bounty.status === BountyStatusE.COMPLETED ||
-                bounty.status === BountyStatusE.AVAILABLE
+                bounty.status === "COMPLETED" || bounty.status === "AVAILABLE"
                   ? styles.completedBadge
                   : styles.takenBadge
               }`}
@@ -34,7 +35,7 @@ export const BountyCell: React.FC<{ bounty: IBounty; showcase?: boolean }> = ({
             </div>
           )}
           <div className={styles.bountyPriceWrapper}>
-            BOUNTY: <span className={styles.priceWrapper}>{bounty.price}</span>{" "}
+            BOUNTY: <span className={styles.priceWrapper}>{bounty.prize}</span>{" "}
             USD
           </div>
         </div>

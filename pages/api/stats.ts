@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { IStats } from "../../shared/stats";
-import initializeSheet from "../../shared/sheet";
+import type { Statistics } from "../../shared/types";
+import { initialize } from "../../shared/sheet";
 
 const KEYS = <const>[
   "N_AVAIL_BOUNTIES",
@@ -11,7 +11,7 @@ const KEYS = <const>[
 ];
 
 const getStats = async (): Promise<Record<typeof KEYS[number], number>> => {
-  const sheet = await initializeSheet();
+  const sheet = await initialize();
   await sheet.loadInfo();
   const apiSheet = sheet.sheetsByTitle.API;
   const rows = await apiSheet.getRows();
@@ -28,7 +28,7 @@ const getStats = async (): Promise<Record<typeof KEYS[number], number>> => {
 
 export default async function handler(
   _req: NextApiRequest,
-  res: NextApiResponse<IStats>
+  res: NextApiResponse<Statistics>
 ) {
   const stats = await getStats();
 

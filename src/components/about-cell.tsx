@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../styles/components/about-cell.module.css";
+import styles from "../../styles/components/about-cell.module.css";
 
 export const AboutCell: React.FC<{
   title: string;

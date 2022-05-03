@@ -1,8 +1,12 @@
-import { GoogleSpreadsheet } from "google-spreadsheet";
+import type { AnyBounty, Bounty, BountyCompleted } from "./types";
+import {
+  GoogleSpreadsheet,
+  type GoogleSpreadsheetRow,
+} from "google-spreadsheet";
 
 const TRACKER_SHEET_ID = "1PrfPAxLEsQdKUCwHCLZ7gMBiv10CY1v3gRVx5Gh1QHY";
 
-export default async function initialize(): Promise<GoogleSpreadsheet> {
+export const initialize = async (): Promise<GoogleSpreadsheet> => {
   // Initialize the sheet - doc ID is the long id in the sheets URL
   const doc = new GoogleSpreadsheet(TRACKER_SHEET_ID);
 
@@ -14,4 +18,104 @@ export default async function initialize(): Promise<GoogleSpreadsheet> {
   });
 
   return doc;
-}
+};
+
+const COLUMNS = <const>{
+  status: "status",
+  submittedOn: "submitted on",
+  completedOn: "completed on",
+  bountyGithubUrl: "github issue link",
+  bountyServiceUrl: "service url",
+  submissionUrl: "submission url",
+  demoUrl: "demo url",
+  title: "title",
+  description: "description",
+  prize: "prize (USD)",
+};
+
+const FilterByType =
+  (type: "homepage" | "showcase") => (bounty: Partial<AnyBounty>) => {
+    if (type === "homepage") {
+      if (bounty.status !== "AVAILABLE" && bounty.status !== "TAKEN")
+        return false;
+    } else {
+      if (bounty.status !== "COMPLETED") return false;
+    }
+
+    const keys = Object.keys(bounty);
+    return keys.every((k) => typeof (bounty as any)[k] !== "undefined");
+  };
+
+const getBountyRows = async (): Promise<GoogleSpreadsheetRow[]> => {
+  const sheet = await initialize();
+  await sheet.loadInfo();
+  const bountiesSheet = sheet.sheetsByTitle.bounties;
+  return bountiesSheet.getRows();
+};
+
+const toHomePageBounty = (row: GoogleSpreadsheetRow): Partial<Bounty> => {
+  const status: Bounty["status"] | undefined = (() => {
+    const s = row[COLUMNS.status];
+    return s === "paid"
+      ? "COMPLETED"
+      : s === "submitted"
+      ? "AVAILABLE"
+      : s === "in progress"
+      ? "TAKEN"
+      : undefined;
+  })();
+  const submittedOn: string | undefined = (() => {
+    try {
+      return new Date(row[COLUMNS.submittedOn]).toISOString();
+    } catch {
+      return undefined;
+    }
+  })();
+
+  return {
+    status,
+    prize: row[COLUMNS.prize],
+    bountyGithubUrl: row[COLUMNS.bountyGithubUrl],
+    bountyServiceUrl: row[COLUMNS.bountyServiceUrl],
+    title: row[COLUMNS.title],
+    description: row[COLUMNS.description],
+    submittedOn,
+  };
+};
+
+const toShowcaseBounty = (
+  row: GoogleSpreadsheetRow
+): Partial<BountyCompleted> => {
+  const completedOn: string | undefined = (() => {
+    try {
+      return new Date(row[COLUMNS.completedOn]).toISOString();
+    } catch {
+      return undefined;
+    }
+  })();
+
+  return {
+    ...toHomePageBounty(row),
+    demoUrl: row[COLUMNS.demoUrl],
+    submissionUrl: row[COLUMNS.submissionUrl],
+    completedOn,
+  };
+};
+
+export const getHomePageBounties = async (): Promise<Bounty[]> => {
+  const rows = await getBountyRows();
+  const bounties = rows
+    .map(toHomePageBounty)
+    .filter(FilterByType("homepage")) as Bounty[];
+
+  return bounties;
+};
+
+export const getShowcaseBounties = async (): Promise<BountyCompleted[]> => {
+  const rows = await getBountyRows();
+  const bounties = rows
+    .map(toShowcaseBounty)
+    .filter(FilterByType("showcase")) as BountyCompleted[];
+
+  return bounties;
+};

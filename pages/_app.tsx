@@ -1,8 +1,8 @@
 import Head from "next/head";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { HamburgerMenu } from "../components/hamburgerMenu";
-import { StateContext } from "../state/context";
+import { HamburgerMenu } from "../src/components/hamburgerMenu";
+import { StateContext } from "../src/state/context";
 import { useState } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -1,9 +1,11 @@
+import type { Statistics } from "../../shared/types";
 import { useWindowSize } from "../hooks/windowSize";
-import { IStats } from "../shared/stats";
-import styles from "../styles/components/bounties-stats-row.module.css";
+import styles from "../../styles/components/bounties-stats-row.module.css";
 import { Spinner } from "./spinner";
 
-export const BountiesStatsRow: React.FC<{ stats: IStats }> = ({ stats }) => {
+export const BountiesStatsRow: React.FC<{ stats: Statistics }> = ({
+  stats,
+}) => {
   const windowSize = useWindowSize();
   // because of design to fit bounties in one row on tablet we make cells look like mobile ones faster
   // thats why here 'mobile' starts from 760px instead of usual 650px

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import { CashoutCell } from "../components/cashout-cell";
-import { Footer } from "../components/footer";
-import { Navbar } from "../components/navbar";
+import { CashoutCell } from "../src/components/cashout-cell";
+import { Footer } from "../src/components/footer";
+import { Navbar } from "../src/components/navbar";
 import styles from "../styles/earn.module.css";
 
 const EarnPage: NextPage = () => {

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/components/navbar.module.css";
-import { slide as Menu } from "react-burger-menu";
+import styles from "../../styles/components/navbar.module.css";
 import { useWindowSize } from "../hooks/windowSize";
 import { HamburgerMenuButton } from "./hamburgerMenu";
 
