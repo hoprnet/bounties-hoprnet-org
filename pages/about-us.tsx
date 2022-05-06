@@ -25,7 +25,7 @@ const AboutUsPage: NextPage = () => {
           />
           <AboutCell
             title="GROW"
-            description="Lock HOPR tokens in your node to relay user data and cover traffic. The more you stake, the more data you can relay, and the more you earn. A quarter of all HOPR tokens are available only to stakers as a reward for relaying cover traffic."
+            description="Join fellow hunters in the bounty forum to share ideas and learn more about HOPR technology"
             icon="/hopr-grow.png"
           />
         </div>
