@@ -57,7 +57,7 @@ The higher rank, the more eligible they are to receive more rewards.
 | Priority  | Access to bounty priority                                |
 | Part-time | Work part-time at HOPR                                   |
 | Article   | Be part of HOPR's blog                                   |
-| Trio      | Fly and meet HOPR team & cool events                     |
+| Trip      | Fly and meet HOPR team & cool events                     |
 
 | Rank                     | Tips | Tweet | Merch | Priority | Part-time | Article | Trip |
 | ------------------------ | ---- | ----- | ----- | -------- | --------- | ------- | ---- |
