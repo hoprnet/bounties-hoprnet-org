@@ -75,6 +75,7 @@ Before a bounty hunter is featured in an article, they must sign our [code of co
 ### Creating bounties
 
 All bounties should be created in accordance to the [bounty processes](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md).
+Please use [bounty template](https://github.com/hoprnet/hoprnet/blob/master/.github/ISSUE_TEMPLATE/bounty.md).
 
 ### Marketing bounties
 
@@ -83,6 +84,8 @@ The [tracker](#definitions) contains a `recent` sheet which will display the cur
 ### Suggesting bounties and bounty ideas
 
 - for community members, bounty ideas should be posted in the [forum](https://forum.hoprnet.org/t/ideas-box-template-and-creation-guide/3968/2)
-- for HOPR members, already made bounties or bounty ideas can be shared in element `bounties` channel
+- for HOPR members
+ - share ideas in `bounties` channel
+ - share bounties that need to be prioritized with a github URL
 
 The [bounty program owner](#program-owner) is responsible for taking a look at the bounties and selecting those which will be created. All bounty ideas are tracked in the [tracker](#definitions).
