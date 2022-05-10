@@ -68,7 +68,7 @@ The higher rank, the more eligible they are to receive more rewards.
 
 ### Code of Conduct
 
-Before a bounty hunter is featured in an article, they must sign our [code of conduct](https://docs.google.com/document/d/10pb2yX3R3irQqaaiMIpOMb9rNoLTIouzb6604oEDHGU/edit?usp=sharing).
+Before a bounty hunter is featured in an article, they must sign our [code of conduct](https://docs.google.com/document/d/1jsCzXFnbMnnNTId8qeozLAY0ZBaTEPoxixf6fJBDQVM/edit).
 
 ## Bounties
 
