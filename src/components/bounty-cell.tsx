@@ -24,15 +24,26 @@ export const BountyCell: React.FC<{
         ) : null}
         <div className={styles.statusWrapper}>
           {!showcase && (
-            <div
-              className={`${styles.statusBadge} ${
-                bounty.status === "COMPLETED" || bounty.status === "AVAILABLE"
-                  ? styles.completedBadge
-                  : styles.takenBadge
-              }`}
-            >
-              {bounty.status}
-            </div>
+              <div className={`${styles.statusContainer}`}>
+                  {
+                      bounty.contest &&
+                      <div
+                          className={`${styles.contestBadge} ${styles.statusBadge}`}
+                      >
+                          CONTEST
+                      </div>
+                  }
+
+                <div
+                  className={`${styles.statusBadge} ${
+                    bounty.status === "COMPLETED" || bounty.status === "AVAILABLE"
+                      ? styles.completedBadge
+                      : styles.takenBadge
+                  }`}
+                >
+                  {bounty.status}
+                </div>
+              </div>
           )}
           <div className={styles.bountyPriceWrapper}>
             BOUNTY: <span className={styles.priceWrapper}>{bounty.prize}</span>{" "}

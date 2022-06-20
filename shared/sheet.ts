@@ -31,6 +31,7 @@ const COLUMNS = <const>{
   title: "title",
   description: "description",
   prize: "prize (USD)",
+  contest: "contest"
 };
 
 const FilterByType =
@@ -64,6 +65,7 @@ const toHomePageBounty = (row: GoogleSpreadsheetRow): Partial<Bounty> => {
       ? "TAKEN"
       : undefined;
   })();
+  const contest = row[COLUMNS.contest] === "TRUE" ? true : false;
   const submittedOn: string | undefined = (() => {
     try {
       return new Date(row[COLUMNS.submittedOn]).toISOString();
@@ -79,6 +81,7 @@ const toHomePageBounty = (row: GoogleSpreadsheetRow): Partial<Bounty> => {
     bountyServiceUrl: row[COLUMNS.bountyServiceUrl],
     title: row[COLUMNS.title],
     description: row[COLUMNS.description],
+    contest,
     submittedOn,
   };
 };

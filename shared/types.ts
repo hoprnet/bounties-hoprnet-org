@@ -7,6 +7,7 @@ export interface Bounty {
   completedOn: string;
   bountyGithubUrl: string;
   bountyServiceUrl: string;
+  contest: boolean;
 }
 
 export interface BountyCompleted extends Bounty {
