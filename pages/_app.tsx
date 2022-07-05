@@ -14,31 +14,31 @@ import createEmotionCache from '../src/utils/createEmotionCache';
 import lightTheme from '../styles/theme/lightTheme';
 
 
-const popupCheck = () => {
-    try {
-        const ls = window.localStorage.getItem('popupOneTime');
-        const cookie = Cookies.get('popupOneTime');
-
-        if (ls === 'false' || cookie === 'false') {
-            return false;
-        } else {
-            return true;
-        }
-    } catch (err) {
-        return true;
-    }
-}
+// const popupCheck = () => {
+//     try {
+//         const ls = window.localStorage.getItem('popupOneTime');
+//         const cookie = Cookies.get('popupOneTime');
+//
+//         if (ls === 'false' || cookie === 'false') {
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     } catch (err) {
+//         return true;
+//     }
+// }
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [hamburgerMenuOpen, toggleHamburgerMenu] = useState(false);
-  const [popup, setPopup] = useState(popupCheck());
+  // const [popup, setPopup] = useState(popupCheck());
   const emotionCache = createEmotionCache();
 
-    const onClosePopup = () => {
-        localStorage.setItem('popupOneTime', 'false');
-        document.cookie = 'popupOneTime=false';
-        setPopup(false);
-    }
+    // const onClosePopup = () => {
+    //     localStorage.setItem('popupOneTime', 'false');
+    //     document.cookie = 'popupOneTime=false';
+    //     setPopup(false);
+    // }
 
   return (
     <>
@@ -54,12 +54,12 @@ function MyApp({ Component, pageProps }: AppProps) {
                  <CssBaseline />
                  <HamburgerMenu />
                  <Component {...pageProps} />
-                  {
-                      popup &&
-                      <PopUp
-                          onClose={onClosePopup}
-                      />
-                  }
+                  {/*{*/}
+                  {/*    popup &&*/}
+                  {/*    <PopUp*/}
+                  {/*        onClose={onClosePopup}*/}
+                  {/*    />*/}
+                  {/*}*/}
               </ThemeProvider>
           </CacheProvider>
       </StateContext.Provider>
