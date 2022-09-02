@@ -49,7 +49,7 @@ const BountyStatCell: React.FC<{
   return (
     <div className={styles.cell}>
       <div>{text}</div>
-      {value ? (
+      {typeof value === "number" ? (
         <div className={styles.cellValue}>
           {value}
           {unit && <pre className={styles.cellUnit}>{unit}</pre>}
