@@ -20,32 +20,32 @@ This document describes the bounty program.
 
 The program owner is responsible for the bounty program and its administration.
 
-- assigns bounty admins
-- makes sure that bounty admins are following up on their responsibilities  
-- handles the entire administration related to a bounty (e.g. publishing, monitoring, payments ...)
-- update [tracker](#definitions)
-- Review applications of bounty hunters and approve them 
-- Maintain communication with the bounty hunter and bounty admin 
-- communicates with COM-Team to promote bounties and hunters   
+- Assigns bounty admins
+- Makes sure that bounty admins are following up on their responsibilities  
+- Handles the entire administration related to a bounty (e.g. publishing, monitoring, payments ...)
+- Updates [tracker](#definitions)
+- Reviews applications of bounty hunters and approve them 
+- Maintains communication with the bounty hunter and bounty admin 
+- Communicates with COM-Team to promote bounties and hunters   
 
 ### Bounty Admin
 
-A bounty admin is a person who is responsible for a bounty.
+A bounty admin is the person responsible for a bounty.
 
-- creates the bounty as a github issue in the dedicated bounty repository using the [bounty template](https://github.com/hoprnet/hoprnet/blob/master/.github/ISSUE_TEMPLATE/bounty.md)
-- assigns herself/himself and the program owner (optional: [bounty expert](#definitions)) to the github issue
-- attaches the bounty label to the issue 
-- guesstimate the required working hours to finish the bounty and insert the gustimate as a comment in the issue
-- assist bounty hunters in case of questions that the program owner cannot answer 
-- reviews/tests the bounty submission 
-- (optional) appoints a bounty expert in case neither the bounty admin nor the program owner are able to assess the quality of a submission   
+- Creates the bounty as a github issue in the dedicated [bounty repository](https://github.com/hoprnet/hopr-bounty-submission) using the [bounty template](https://github.com/hoprnet/hopr-bounty-submission/blob/main/.github/ISSUE_TEMPLATE/bounty-issue-template-.md)
+- Assigns herself/himself and the program owner (optional: [bounty expert](#definitions)) to the github issue
+- Attaches the bounty label to the issue 
+- Guesstimates the required working hours to finish the bounty and inserts the gustimate as a comment in the issue
+- Assista bounty hunters in case of questions that the program owner cannot answer 
+- Reviews/tests the bounty submission 
+- Appoints a bounty expert in case neither the bounty admin nor the program owner are able to assess the quality of a submission **(optional)**
 
 ### Bounty Expert
 
 A bounty expert can assess a bounty from a technical point of view. The bounty expert assists the bounty admin.
 
-- assesses whether the issue is doable from a technical point of view 
-- assists with reviewing/testing a bounty submission
+- Assesses whether the issue is doable from a technical point of view 
+- Assists with reviewing/testing a bounty submission
 
 ### Bounty Hunter
 
@@ -92,7 +92,7 @@ Before a bounty hunter is featured in an article, they must sign our [code of co
 ### Creating bounties
 
 All bounties should be created in accordance to the [bounty process](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md).
-Please use [bounty template](https://github.com/hoprnet/hoprnet/blob/master/.github/ISSUE_TEMPLATE/bounty.md).
+Please use [bounty template](https://github.com/hoprnet/hopr-bounty-submission/blob/main/.github/ISSUE_TEMPLATE/bounty-issue-template-.md).
 
 ### Marketing bounties
 
