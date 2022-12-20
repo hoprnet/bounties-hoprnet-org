@@ -1,53 +1,69 @@
 # The Bounty Program
 
-This document outlines how the bounty program is run.
+This document describes the bounty program.
 
 ## Definitions
 
 | Name                                                                                                            | Description                                                   |
 | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [program owner](#program-owner)                                                                                 | person responsible for overseeing the bounty program's vision |
-| [bounty admin](#bounty-admin)                                                                                   | person who oversees a specific bounty                         |
-| [bounty hunter](#bounty-hunter)                                                                                 | person working on a bounty                                    |
-| [rank](#ranks)                                                                                                  | bounty hunter ranks                                           |
-| [tracker](https://docs.google.com/spreadsheets/d/1PrfPAxLEsQdKUCwHCLZ7gMBiv10CY1v3gRVx5Gh1QHY/edit?usp=sharing) | A sheet used to track bounties                                |
+| [program owner](#program-owner)                                                                                 | Person responsible for the bounty program |
+| [bounty admin](#bounty-admin)                                                                                   | Person responsible for a bounty |
+| [bounty expert](#bounty-expert)                                                                                 | Person assisting the bounty admin reviwing/testing bounty submissions |
+| [bounty hunter](#bounty-hunter)                                                                                 | Person working on a bounty |
+| [rank](#ranks)                                                                                                  | Rank of the bounty hunter |
+| [tracker](https://docs.google.com/spreadsheets/d/1PrfPAxLEsQdKUCwHCLZ7gMBiv10CY1v3gRVx5Gh1QHY/edit?usp=sharing) | Internal bounty tracking sheet |
+| [bounty process](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md)                         | Internal sheet describing the creation of a bounty |
 
 ## Roles
 
 ### Program Owner
 
-The program owner is a person who has been assigned to oversee the continuation of the bounty program.
+The program owner is responsible for the bounty program and its administration.
 
-- organize monthly contests
-- assigns bounty admins
-- ensure bounty admins are doing their job right
-- sync with comm team to better align with marketing
-- review bounty ideas once a day
+- Assigns bounty admins
+- Makes sure that bounty admins are following up on their responsibilities  
+- Handles the entire administration related to a bounty (e.g. publishing, monitoring, payments ...)
+- Updates [tracker](#definitions)
+- Reviews applications of bounty hunters and approve them 
+- Maintains communication with the bounty hunter and bounty admin 
+- Communicates with COM-Team to promote bounties and hunters   
 
 ### Bounty Admin
 
-A bounty admin is a person who has been assigned to follow-up on a bounty and ensure its completion.
+A bounty admin is the person responsible for a bounty.
 
-- monitor github issue and assist bounty hunter
-- update [tracker](#definitions)
+- Creates the bounty as a github issue in the dedicated [bounty repository](https://github.com/hoprnet/hopr-bounty-submission) using the [bounty template](https://github.com/hoprnet/hopr-bounty-submission/blob/main/.github/ISSUE_TEMPLATE/bounty-issue-template-.md)
+- Assigns herself/himself and the program owner (optional: [bounty expert](#definitions)) to the github issue
+- Attaches the bounty label to the issue 
+- Guesstimates the required working hours to finish the bounty and inserts the gustimate as a comment in the issue
+- Assista bounty hunters in case of questions that the program owner cannot answer 
+- Reviews/tests the bounty submission 
+- Appoints a bounty expert in case neither the bounty admin nor the program owner are able to assess the quality of a submission **(optional)**
+
+### Bounty Expert
+
+A bounty expert can assess a bounty from a technical point of view. The bounty expert assists the bounty admin.
+
+- Assesses whether the issue is doable from a technical point of view 
+- Assists with reviewing/testing a bounty submission
 
 ### Bounty Hunter
 
-A bounty hunter is a participant in one of the bounties.
+A bounty hunter is the person working on the bounty.
 
 ## Ranks
 
-| Rank           | Level | Description                                                                                  |
-| -------------- | ----- | -------------------------------------------------------------------------------------------- |
-| new hunter     | 0     | is working on their first bounties                                                           |
-| trusted hunter | 1     | has showcased that they are capable, reliable and professional                               |
-| pro hunter     | 2     | has expressed and showcased additionally availability to work on bounties on a regular basis |
-| elite hunter   | 3     | has shown exceptional skills and dedication, often going beyond the bounty’s scope           |
+| Rank           | Level | Num Bounties | Description                                                                                  |
+| -------------- | ----- | -----         | -------------------------------------------------------------------------------------------- |
+| bad            | -1    |               | hunter worked on a bounty but is not reliable and did not do a satisfactory job              |
+| new            | 0     |  0 - 2         | hunter is working on their first bounties                                                    |
+| trusted        | 1     |  2 - 4         | hunter has showcased that they are capable, reliable and professional                        |
+| committed      | 2     |  4 - 6         | hunter works on bounties on a regular basis and submissions have a high quality              |
+| epic           | 3     |  6 +            | hunter has shown exceptional skills and dedication, often going beyond the bounty’s scope    |
 
-### Rewards
+## Rewards
 
-For the majority of the bounties, the only reward should be the bounty prize set in accordance with the [bounty processes](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md). When a bounty hunter goes beyond the bounty’s scope, it’s often good to reward that with a tip, either in the form of more payment or NFT, this should encourage a return-back.
-The higher rank, the more eligible they are to receive more rewards.
+For the majority of the bounties, the only reward should be the bounty prize set in accordance with the [bounty process](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md). When a bounty hunter goes beyond the bounty’s scope, it is possible to reward that with a tip in the form of a higher payment or an NFT. 
 
 | Reward    | Description                                              |
 | --------- | -------------------------------------------------------- |
@@ -55,18 +71,19 @@ The higher rank, the more eligible they are to receive more rewards.
 | Tweet     | Tweet upon completion of bounty with their handle tagged |
 | Merch     | Receive HOPR Merch                                       |
 | Priority  | Access to bounty priority                                |
-| Part-time | Work part-time at HOPR                                   |
+| Job       | Hunter should be considered for a job at HOPR            |
 | Article   | Be part of HOPR's blog                                   |
 | Trip      | Fly and meet HOPR team & cool events                     |
 
-| Rank                     | Tips | Tweet | Merch | Priority | Part-time | Article | Trip |
-| ------------------------ | ---- | ----- | ----- | -------- | --------- | ------- | ---- |
-| [new hunter](#ranks)     | ✅   | ✅    | ❌    | ❌       | ❌        | ❌      | ❌   |
-| [trusted hunter](#ranks) | ✅   | ✅    | ✅    | ❌       | ❌        | ❌      | ❌   |
-| [pro hunter](#ranks)     | ✅   | ✅    | ✅    | ✅       | ❌        | ❌      | ❌   |
-| [elite hunter](#ranks)   | ✅   | ✅    | ✅    | ✅       | ✅        | ✅      | ✅   |
 
-### Code of Conduct
+| Rank                     | Tips | Tweet | Merch | Priority |   Article |    Trip |     Job |
+| ------------------------ | ---- | ----- | ----- | -------- | --------- | ------- | ----    |
+| [new](#ranks)            | ✅   | ❌    | ❌    | ❌       | ❌      | ❌      | ❌   |
+| [trusted](#ranks)        | ✅   | ✅    | ✅    | ❌       | ❌      | ❌      | ❌   |
+| [commited](#ranks)       | ✅   | ✅    | ✅    | ✅       | ✅      | ❌      | ❌   |
+| [epic](#ranks)           | ✅   | ✅    | ✅    | ✅       | ✅      | ✅      | ✅   |
+
+## Code of Conduct
 
 Before a bounty hunter is featured in an article, they must sign our [code of conduct](https://docs.google.com/document/d/1jsCzXFnbMnnNTId8qeozLAY0ZBaTEPoxixf6fJBDQVM/edit).
 
@@ -74,18 +91,13 @@ Before a bounty hunter is featured in an article, they must sign our [code of co
 
 ### Creating bounties
 
-All bounties should be created in accordance to the [bounty processes](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md).
-Please use [bounty template](https://github.com/hoprnet/hoprnet/blob/master/.github/ISSUE_TEMPLATE/bounty.md).
+All bounties should be created in accordance to the [bounty process](https://github.com/hoprnet/hoprnet/blob/master/.processes/bounty.md).
+Please use [bounty template](https://github.com/hoprnet/hopr-bounty-submission/blob/main/.github/ISSUE_TEMPLATE/bounty-issue-template-.md).
 
 ### Marketing bounties
 
-The [tracker](#definitions) contains a `recent` sheet which will display the current week's submitted / completed bounties, the comm team can observe the sheet to followup on recent updates.
+The [tracker](#definitions) contains a `recent` sheet which will display the submitted/completed bounties. The bounty program owner communicates with COM-Team about possibilites to communicate the completed bounties as part of the marketing strategy. 
 
 ### Suggesting bounties and bounty ideas
 
-- for community members, bounty ideas should be posted in the [forum](https://forum.hoprnet.org/t/ideas-box-template-and-creation-guide/3968/2)
-- for HOPR members
- - share ideas in `bounties` channel
- - share bounties that need to be prioritized with a github URL
-
-The [bounty program owner](#program-owner) is responsible for taking a look at the bounties and selecting those which will be created. All bounty ideas are tracked in the [tracker](#definitions).
+The bounty program follows a pro-active approach where teams at HOPR are encouraged to propose bounties. The [bounty program owner](#program-owner) is responsible for approving the bounty. 
