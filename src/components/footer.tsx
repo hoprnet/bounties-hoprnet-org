@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "../../styles/components/footer.module.css";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <div className={styles.container}>
       <div className={styles.leftCell}>
@@ -16,13 +17,13 @@ export const Footer = () => {
         </div>
         <div>
           <div className={`${styles.addressWrapper} ${styles.footerText}`}>
-            <div>HOPR Services AG</div>
+            <div>HOPR</div>
             <div>Bleicherweg 33</div>
             <div>8003 Zürich</div>
             <div>Switzerland</div>
           </div>
           <div className={styles.footerText}>
-            ©2021 HOPR Association, all rights reserved
+            &copy;{currentYear} HOPR Association, all rights reserved
           </div>
         </div>
       </div>

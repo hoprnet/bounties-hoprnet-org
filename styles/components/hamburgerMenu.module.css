@@ -1,7 +1,7 @@
 .burgerWrapper {
   position: relative;
-  height: 50px;
-  width: 50px;
+  height: 48px;
+  width: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,15 +18,16 @@
   font-size: 0px;
 }
 .burgerBar {
-  height: 4px;
+  height: 3px;
   background-color: #414141;
 }
 .burgerBarsWrapper {
-  height: 24px;
-  width: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 4px;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
 }
 .list {
   display: flex !important;

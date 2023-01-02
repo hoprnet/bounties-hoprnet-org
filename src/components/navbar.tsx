@@ -13,7 +13,7 @@ export const Navbar = () => {
       <div className={styles.containerMobile}>
         <Link href="/">
           <span className={styles.hoprLogoMobile}>
-            <Image src="/logo.svg" height={60} width={120} alt="hopr" />
+            <Image src="/logo.svg" height={48} width={96} alt="hopr" />
           </span>
         </Link>
         <div className={styles.hamburgerWrapper}>
@@ -26,7 +26,7 @@ export const Navbar = () => {
       <div className={styles.container}>
         <Link href="/">
           <span className={styles.hoprLogo}>
-            <Image src="/logo.svg" height={60} width={120} alt="hopr" />
+            <Image src="/logo.svg" height={48} width={96} alt="hopr" />
           </span>
         </Link>
 
