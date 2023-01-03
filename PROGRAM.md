@@ -36,7 +36,7 @@ A bounty admin is the person responsible for a bounty.
 - Assigns herself/himself and the program owner (optional: [bounty expert](#definitions)) to the github issue
 - Attaches the bounty label to the issue 
 - Guesstimates the required working hours to finish the bounty and inserts the gustimate as a comment in the issue
-- Assista bounty hunters in case of questions that the program owner cannot answer 
+- Assists bounty hunters in case of questions that the program owner cannot answer 
 - Reviews/tests the bounty submission 
 - Appoints a bounty expert in case neither the bounty admin nor the program owner are able to assess the quality of a submission **(optional)**
 
