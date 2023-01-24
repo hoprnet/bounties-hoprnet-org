@@ -22,7 +22,7 @@ export const Footer = () => {
             <div>Switzerland</div>
           </div>
           <div className={styles.footerText}>
-            ©2021 HOPR Association, all rights reserved
+            © HOPR Association, all rights reserved
           </div>
         </div>
       </div>
