@@ -1,18 +1,50 @@
-import type { NextPage } from "next";
-import type { Bounty } from "../shared/types";
-import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import styled from "@emotion/styled";
+import axios from "axios";
+import lottie from "lottie-web";
+import useSWR from "swr";
+import styles from "../styles/index.module.css";
+
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BountiesGrid } from "../src/components/bounties-grid";
 import { BountiesStatsRow } from "../src/components/bounties-stats-row";
 import { Footer } from "../src/components/footer";
 import { Navbar } from "../src/components/navbar";
-import styles from "../styles/index.module.css";
-import useSWR from "swr";
-import axios from "axios";
 import { useWindowSize } from "../src/hooks/windowSize";
-import lottie, { AnimationItem } from "lottie-web";
-import robotsAnimation from "../src/animation/anim_hero.json";
+
+import type { NextPage } from "next";
+import type { Bounty } from "../shared/types";
+
 import terminalRobotAnimation from "../src/animation/anim_robot_terminal.json";
+import robotsAnimationDesktop from "../src/animation/desktop_anim_three_robots.json";
+import robotsAnimationMobile from "../src/animation/mobile_anim_two_robots.json";
+
+type AnimationContainerProps = {
+  show: boolean;
+};
+
+const AnimationContainer = styled.div<AnimationContainerProps>`
+  display: ${(props) => (props.show ? "block" : "none")};
+  margin: 0 4%;
+  padding-top: 80px;
+
+  @media (min-width: 650px) {
+    margin: 4% 12%;
+    padding-top: 0;
+  }
+`;
+
+const YellowBall = styled.img`
+  left: 50%;
+  position: absolute;
+  top: 8%;
+  transform: translate(-50%, -50%);
+  width: min(800px, 85%);
+  z-index: -2;
+
+  @media (min-width: 650px) {
+    top: 0;
+  }
+`;
 
 const BOUNTY_SORT_PREFERENCE: Bounty["status"][] = ["AVAILABLE", "TAKEN"];
 const filterAndSortBounties = (bounties: Bounty[]): Bounty[] => {
@@ -39,60 +71,53 @@ const Home: NextPage = () => {
     return filterAndSortBounties(bounties.data?.data?.bounties || []);
   }, [bounties]);
 
+  const [showMobileAnimation, setShowMobileAnimation] = useState(false);
+
   // nextjs remounts page on first load to properly hydrate it
   // this flag is to prevent loading animation twice
-  let animationLoaded = false;
-  const [robotsAnimObj, setRobotsAnimObj] = useState<AnimationItem>();
+  const animationLoaded = useRef(false);
+
   useEffect(() => {
     // check to prevent double animation load on page remount
-    if (!animationLoaded) {
-      setRobotsAnimObj(
-        lottie.loadAnimation({
-          container: document.querySelector("#robotsAnimation")!,
-          animationData: robotsAnimation,
-        })
-      );
+    if (!animationLoaded.current) {
+      lottie.loadAnimation({
+        container: document.querySelector("#robotsAnimationDesktop")!,
+        animationData: robotsAnimationDesktop,
+      });
+
+      lottie.loadAnimation({
+        container: document.querySelector("#robotsAnimationMobile")!,
+        animationData: robotsAnimationMobile,
+      });
+
       lottie.loadAnimation({
         container: document.querySelector("#terminalRobotAnimation")!,
         animationData: terminalRobotAnimation,
       });
     }
-    animationLoaded = true;
+    animationLoaded.current = true;
   }, []);
 
-  // for now we only have animated svgs for pc so we hide it on mobile resolutions
   useEffect(() => {
-    if (!robotsAnimObj) return;
-
-    if ((windowSize.width || 0) <= 1000) {
-      robotsAnimObj.hide();
+    if (windowSize.width && windowSize.width <= 1000) {
+      setShowMobileAnimation(true);
     } else {
-      robotsAnimObj.show();
+      setShowMobileAnimation(false);
     }
-  }, [windowSize.width, robotsAnimObj]);
-
+  }, [windowSize.width]);
   return (
     <div>
       <Navbar />
       <div className="gradient-bg" />
-      <div className={styles.robotsAnimatedImage} id="robotsAnimation"></div>
-      <div className={styles.robotsImage}>
-        {(windowSize.width || 0) <= 650 ? (
-          <Image
-            src="/HOPR_BOUNTY_HERO_MOBILE.png"
-            alt="hopr bounty hero"
-            height={350}
-            width={350}
-          />
-        ) : (windowSize.width || 0) <= 1000 ? (
-          <Image
-            src="/HOPR_BOUNTY_HERO_TABLET.png"
-            alt="hopr bounty hero"
-            height={584}
-            width={693}
-          />
-        ) : null}
-      </div>
+      <YellowBall src="/yellow_ball.svg" alt="" />
+      <AnimationContainer
+        id="robotsAnimationDesktop"
+        show={!showMobileAnimation}
+      ></AnimationContainer>
+      <AnimationContainer
+        id="robotsAnimationMobile"
+        show={showMobileAnimation}
+      ></AnimationContainer>
       <div className={styles.bountiesStatsWrapper}>
         <BountiesStatsRow stats={stats} />
       </div>
