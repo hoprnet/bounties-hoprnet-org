@@ -1,15 +1,25 @@
 import type { AnyBounty } from "../../shared/types";
 import React from "react";
 import styles from "../../styles/components/bounty-cell.module.css";
+import Image from "next/image";
 
 export const BountyCell: React.FC<{
   bounty: AnyBounty;
   showcase?: boolean;
 }> = ({ bounty, showcase }) => {
+  console.log("BOUNTY:", bounty);
   return (
     <div className={styles.container} key={bounty.bountyServiceUrl}>
       <div className={styles.topContainer}>
         <a href={bounty.bountyServiceUrl} target="_blank" rel="noreferrer">
+          <div className={styles.imgContainer}>
+            <Image
+              className={styles.img}
+              src="/app-development.svg"
+              alt="App dev"
+              layout="fill"
+            />
+          </div>
           <div className={styles.title}>{bounty.title}</div>
           {bounty.description ? (
             <div className={styles.description}>{bounty.description}</div>
@@ -24,26 +34,23 @@ export const BountyCell: React.FC<{
         ) : null}
         <div className={styles.statusWrapper}>
           {!showcase && (
-              <div className={`${styles.statusContainer}`}>
-                  {
-                      bounty.contest &&
-                      <div
-                          className={`${styles.contestBadge} ${styles.statusBadge}`}
-                      >
-                          CONTEST
-                      </div>
-                  }
-
-                <div
-                  className={`${styles.statusBadge} ${
-                    bounty.status === "COMPLETED" || bounty.status === "AVAILABLE"
-                      ? styles.completedBadge
-                      : styles.takenBadge
-                  }`}
-                >
-                  {bounty.status}
+            <div className={`${styles.statusContainer}`}>
+              {bounty.contest && (
+                <div className={`${styles.contestBadge} ${styles.statusBadge}`}>
+                  CONTEST
                 </div>
+              )}
+
+              <div
+                className={`${styles.statusBadge} ${
+                  bounty.status === "COMPLETED" || bounty.status === "AVAILABLE"
+                    ? styles.completedBadge
+                    : styles.takenBadge
+                }`}
+              >
+                {bounty.status}
               </div>
+            </div>
           )}
           <div className={styles.bountyPriceWrapper}>
             BOUNTY: <span className={styles.priceWrapper}>{bounty.prize}</span>{" "}
