@@ -137,21 +137,6 @@ const Home: NextPage = () => {
         <div className={styles.gridWrapper}>
           <BountiesGrid bounties={bountiesSorted} />
         </div>
-        <div className={styles.centeringWrapper}>
-          <div className={`${styles.wideText} ${styles.shareIdeasText}`}>
-            Don’t see a bounty for you? Announce your interest in being a hunter
-            and share your bounty ideas in the{" "}
-            <a
-              href="https://forum.hoprnet.org/c/hopr-bounty-program/69"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.linkStyle}
-            >
-              bounty forum
-            </a>
-            .
-          </div>
-        </div>
         <div className={styles.titleStyle}>BE PART OF THE HOPR ECOSYSTEM</div>
         <div>
           <div className={styles.sectionWrapper}>
