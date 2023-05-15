@@ -9,9 +9,12 @@
 }
 .imgContainer {
   background: linear-gradient(#0000bd, #000050);
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 9px 9px 0 0;
+  display: grid;
   height: 200px;
+  place-items: center;
   position: relative;
+
 }
 .img {
   width: 100%;

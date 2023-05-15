@@ -109,7 +109,7 @@ const Home: NextPage = () => {
     <div>
       <Navbar />
       <div className="gradient-bg" />
-      <YellowBall src="/yellow_ball.svg" alt="" />
+      <YellowBall src="/yellow_ball.svg" alt="HOPR's yellow ball" />
       <AnimationContainer
         id="robotsAnimationDesktop"
         show={!showMobileAnimation}

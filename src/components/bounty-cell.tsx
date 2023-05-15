@@ -7,7 +7,6 @@ export const BountyCell: React.FC<{
   bounty: AnyBounty;
   showcase?: boolean;
 }> = ({ bounty, showcase }) => {
-  console.log("BOUNTY:", bounty);
   return (
     <div className={styles.container} key={bounty.bountyServiceUrl}>
       <div className={styles.topContainer}>
@@ -15,9 +14,10 @@ export const BountyCell: React.FC<{
           <div className={styles.imgContainer}>
             <Image
               className={styles.img}
-              src="/app-development.svg"
+              src={bounty.category ? `/images/bounties${bounty.category.toLowerCase()}.svg` : '/images/bounties/development.svg'}
               alt="App dev"
-              layout="fill"
+              height={160}
+              width={300}
             />
           </div>
           <div className={styles.title}>{bounty.title}</div>
