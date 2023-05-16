@@ -8,6 +8,7 @@ export interface Bounty {
   bountyGithubUrl: string;
   bountyServiceUrl: string;
   contest: boolean;
+  category: "development" | "analytics" | "documentation" | "dapp"
 }
 
 export interface BountyCompleted extends Bounty {
