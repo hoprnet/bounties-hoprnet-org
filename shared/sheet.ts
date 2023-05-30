@@ -31,7 +31,8 @@ const COLUMNS = <const>{
   title: "title",
   description: "description",
   prize: "prize (USD)",
-  contest: "contest"
+  contest: "contest",
+  category: 'category'
 };
 
 const FilterByType =
@@ -73,6 +74,7 @@ const toHomePageBounty = (row: GoogleSpreadsheetRow): Partial<Bounty> => {
       return undefined;
     }
   })();
+  const category = row[COLUMNS.category] ? row[COLUMNS.category] : null;
 
   return {
     status,
@@ -83,6 +85,7 @@ const toHomePageBounty = (row: GoogleSpreadsheetRow): Partial<Bounty> => {
     description: row[COLUMNS.description],
     contest,
     submittedOn,
+    category
   };
 };
 
