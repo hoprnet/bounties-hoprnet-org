@@ -14,7 +14,7 @@ export const BountyCell: React.FC<{
           <div className={styles.imgContainer}>
             <Image
               className={styles.img}
-              src={bounty.category ? `/images/bounties${bounty.category.toLowerCase()}.svg` : '/images/bounties/development.svg'}
+              src={bounty.category ? `/images/bounties/${bounty.category.toLowerCase()}.svg` : '/images/bounties/development.svg'}
               alt="App dev"
               height={160}
               width={300}
